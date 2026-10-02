@@ -1,0 +1,32 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: offline page set for the plan update scene (.demo domains are not real sites)
+pages:
+- url: https://tamm.abudhabi.demo/residency/medical
+  topic: step_durations
+  text: Medical fitness results are usually issued within 2-4 working days.
+  card:
+    claim: step_duration
+    subject: medical
+    low: 2
+    high: 4
+    unit: days
+- url: https://icp.gov.ae.demo/eid/processing
+  topic: step_durations
+  text: Emirates ID is usually issued within 5-14 days after biometrics.
+  card:
+    claim: step_duration
+    subject: emirates_id
+    low: 5
+    high: 14
+    unit: days
+- url: https://fast-visa-blog.demo/eid-in-one-day
+  topic: step_durations
+  text: Get your EID in 1 day!
+  card:
+    claim: step_duration
+    subject: emirates_id
+    low: 1
+    high: 1
+    unit: days

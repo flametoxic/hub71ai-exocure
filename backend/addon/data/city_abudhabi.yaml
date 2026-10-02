@@ -1,0 +1,103 @@
+meta:
+  collected: "2026-10-01"
+  note: "Public data; market and model values are labelled as not official."
+
+districts:
+  A:
+    name: {en: "Al Reem Island", ru: "остров Аль-Рим"}
+    role: {en: "central, next to ADGM / Hub71", ru: "центр, рядом с ADGM и Hub71"}
+    rent_2br_aed_year: {low: 119000, high: 130000}
+    source: "Property Finder, 2-bedroom apartments for rent, Al Reem Island (typical range), snapshot 2026-10-01"
+    url: "https://www.propertyfinder.ae/en/rent/abu-dhabi/2-bedroom-apartments-for-rent-al-reem-island.html"
+    kind: market
+  B:
+    name: {en: "Mohamed Bin Zayed City", ru: "Мохаммед бин Заид Сити"}
+    role: {en: "far, mainland, cheaper", ru: "дальше, на материке, дешевле"}
+    rent_2br_aed_year: {low: 72000, high: 75000}
+    source: "Property Finder, 2-bedroom apartments for rent, Mohamed Bin Zayed City (price range, few listings), snapshot 2026-10-01"
+    url: "https://www.propertyfinder.ae/en/rent/abu-dhabi/2-bedroom-apartments-for-rent-mohamed-bin-zayed-city.html"
+    kind: market
+  C:
+    name: {en: "Khalifa City", ru: "Халифа Сити"}
+    role: {en: "middle, near the airport road", ru: "середина, у дороги к аэропорту"}
+    rent_2br_aed_year: {low: 70000, high: 95000}
+    source: "Property Finder, 2-bedroom apartments for rent, Khalifa City (price range), snapshot 2026-10-01"
+    url: "https://www.propertyfinder.ae/en/rent/abu-dhabi/2-bedroom-apartments-for-rent-khalifa-city.html"
+    kind: market
+
+hub71:
+  address: "Al Khatem Tower, 15th floor, ADGM Square, Al Maryah Island"
+  url: "https://www.hub71.com/contact"
+  kind: official
+  incentives: {en: "Access Programme: AED 250,000 flexible incentives including housing, health insurance and office, plus AED 250,000 for equity (SAFE)", ru: "Access Programme: 250 000 AED гибких стимулов, включая жильё, медстраховку и офис, плюс 250 000 AED за долю (SAFE)"}
+  incentives_url: "https://www.hub71.com/program/access-programme"
+
+electricity_expat_apartment:
+  green_fils_per_kwh: 26.8
+  red_fils_per_kwh: 30.5
+  green_band_kwh_per_day: 20
+  source: "ADDC, Residential rates and tariffs"
+  url: "https://www.addc.ae/en-US/residential/Pages/RatesAndTariffs2025.aspx"
+  kind: official
+
+taxi:
+  day_flag_fall_aed: 5.0
+  night_flag_fall_aed: 5.5
+  per_km_aed: 1.82
+  minimum_fare_aed: 12
+  waiting_aed_per_min: 0.5
+  airport_flag_fall_aed: 20.0
+  day_hours: "06:00–22:00"
+  source: "Abu Dhabi Mobility (ITC), taxi fares"
+  url: "https://admobility.gov.ae/en/taxi-fares"
+  kind: official
+
+darb_toll:
+  fee_aed_per_crossing: 4
+  peak: {en: "Mon–Sat 07:00–09:00 and 15:00–19:00; free on Sundays and public holidays", ru: "пн–сб 07:00–09:00 и 15:00–19:00; воскресенье и праздники бесплатно"}
+  source: "Property Finder guide to Darb (not official)"
+  url: "https://www.propertyfinder.ae/blog/darb-toll-gate/"
+  kind: market
+
+air_quality:
+  pm10_national_limit_24h_ugm3: 150
+  limit_source: "UAE Cabinet Decree No. 12 of 2006, as cited by EAD"
+  dust_event_days_2023: 35
+  dust_event_definition: {en: "days with a daily PM10 average above 350 µg/m³", ru: "дни со среднесуточным PM10 выше 350 мкг/м³"}
+  source: "Environment Agency – Abu Dhabi, Air Quality Annual Summary Report 2023"
+  url: "https://www.ead.gov.ae/-/media/Project/EAD/EAD/Documents/EIM_AIR_QUALITY_ANNUAL_ENG_2023.pdf"
+  kind: official
+
+climate:
+  source: "climate-data.org, Abu Dhabi, 1991–2021 (model data, not official)"
+  url: "https://en.climate-data.org/asia/united-arab-emirates/abu-dhabi/abu-dhabi-3217/"
+  kind: model
+  months:
+    jan: [15.0, 23.4, 63]
+    feb: [15.7, 25.0, 60]
+    mar: [17.9, 28.2, 55]
+    apr: [21.5, 32.8, 50]
+    may: [25.2, 36.9, 49]
+    jun: [27.3, 38.5, 55]
+    jul: [29.6, 40.0, 54]
+    aug: [30.0, 40.7, 52]
+    sep: [27.8, 38.4, 57]
+    oct: [24.7, 35.0, 58]
+    nov: [21.1, 29.9, 59]
+    dec: [17.3, 25.5, 64]
+
+city_rhythm:
+  - {en: "Weekend: Saturday and Sunday", ru: "Выходные: суббота и воскресенье", kind: official, source: "UAE government working week (since 2022)"}
+  - {en: "Midday break for outdoor work: 12:30–15:00, 15 June – 15 September", ru: "Полуденный перерыв для работ на улице: 12:30–15:00, 15 июня – 15 сентября", kind: official, source: "MoHRE midday break", url: "https://en.aletihad.ae/news/uae/4489967/mohre-implements-midday-break-from-june-15-to-september-15"}
+
+indoor_places:
+  url: "https://visitabudhabi.ae/en/plan-your-trip/article-hub/14-indoor-places-in-abu-dhabi"
+  kind: official
+  items: ["The National Aquarium", "SeaWorld Abu Dhabi", "Adventure Zone (Dalma Mall)", "BOUNCE Abu Dhabi (Marina Mall)", "CLYMB Abu Dhabi (Yas Mall)", "Warner Bros. World Abu Dhabi", "Louvre Abu Dhabi", "Natural History Museum Abu Dhabi", "teamLab Phenomena Abu Dhabi"]
+
+still_synthetic:
+  - {en: "queues by hour at medical centres and ICP", ru: "очереди по часам в медцентрах и ICP"}
+  - {en: "PM10 by district by hour for the demo week", ru: "PM10 по районам по часам на демо-неделю"}
+  - {en: "door-to-door travel times for a specific flat", ru: "время в пути от двери до двери для конкретной квартиры"}
+  - {en: "school fees by district", ru: "плата за школу по районам"}
+  - {en: "ramp cars in the depot", ru: "машины с пандусом в депо"}

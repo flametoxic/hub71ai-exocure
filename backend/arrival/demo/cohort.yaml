@@ -1,0 +1,48 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: synthetic cohort generator parameters
+seed:
+  value: 11
+  decided_by: team
+teacher_facts:
+  medical:
+    value:
+    - 2
+    - 3
+    - 2
+    - 4
+    - 3
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  emirates_id:
+    value:
+    - 11
+    - 12
+    - 10
+    - 13
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  tenancy:
+    value:
+    - 6
+    - 8
+    - 5
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+demo_facts:
+- id: signal
+  step_id: emirates_id
+  observed_days:
+    value: 13
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  source_integrity: verified
+- id: noise
+  step_id: bank
+  observed_days:
+    value: 4
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  source_integrity: verified
+- id: forged
+  step_id: medical
+  observed_days:
+    value: 0.1
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  source_integrity: unsigned_upload

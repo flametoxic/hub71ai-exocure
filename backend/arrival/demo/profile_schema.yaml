@@ -1,0 +1,29 @@
+fields:
+  - variable_id: household_size
+    prompts: {en: "How many people are moving?", ru: "Сколько человек переезжает?"}
+    optional: true
+    order: 10
+  - variable_id: children_count
+    prompts: {en: "How many children are moving?", ru: "Сколько детей переезжает?"}
+    optional: true
+    order: 20
+  - variable_id: is_founder
+    prompts: {en: "Are you building a company?", ru: "Вы развиваете компанию?"}
+    optional: true
+    order: 25
+  - variable_id: arrival_date
+    prompts: {en: "When do you expect to arrive?", ru: "Когда вы планируете приехать?"}
+    optional: true
+    order: 30
+  - variable_id: housing_budget_aed_month
+    prompts: {en: "What monthly housing budget should I use in AED?", ru: "Какой месячный бюджет на жильё учитывать в AED?"}
+    optional: true
+    order: 40
+  - variable_id: preferred_setpoint_c
+    prompts: {en: "What indoor temperature do you prefer?", ru: "Какую температуру дома вы предпочитаете?"}
+    optional: true
+    order: 50
+  - variable_id: return_home_hour
+    prompts: {en: "When do you usually return home?", ru: "Во сколько вы обычно возвращаетесь домой?"}
+    optional: true
+    order: 60

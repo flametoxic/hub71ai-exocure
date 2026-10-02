@@ -1,0 +1,73 @@
+@font-face {
+  font-family:'Bruno Ace';
+  src:url('./assets/BrunoAce-Regular.ttf') format('truetype');
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+
+:root{--heading-font:'Bruno Ace',var(--font)}
+.phone-view .device-logo{width:32px;height:30px;object-fit:contain;flex-shrink:0}
+.hub-view .device-logo{width:44px;height:40px;object-fit:contain;flex-shrink:0}
+.hub-view .assistant-logo{width:38px;height:38px;object-fit:contain;flex-shrink:0}
+.phone-view .orb.logo-orb{background:transparent;border:0;box-shadow:none;opacity:1}
+.phone-view .logo-orb img{width:88px;height:88px;object-fit:contain;filter:drop-shadow(0 12px 30px #3D7CF52A)}
+
+.phone-view .phone,.hub-view .hub{
+  position:relative;
+  isolation:isolate;
+  background:#080F19;
+}
+.phone-view .phone::before,.hub-view .hub::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 52% 32%,#39FF9A40 0,transparent 42%),
+    radial-gradient(ellipse at 68% 54%,#3D7CF56B 0,transparent 44%),
+    radial-gradient(ellipse at 43% 76%,#FF870085 0,transparent 40%),
+    radial-gradient(ellipse at 20% 65%,#FF3B6147 0,transparent 42%);
+  filter:blur(35px);
+}
+.hub-view .hub::before{inset:0 10%;filter:blur(50px)}
+
+.phone-view h2,.phone-view .card h4,.phone-view .brand,
+.hub-view h3,.hub-view .brand,.hub-view .home-heading,
+.hub-view .assistant-heading b{
+  font-family:var(--heading-font);
+  font-weight:400;
+  letter-spacing:0;
+}
+.phone-view h2{font-size:23px;line-height:1.4}
+.phone-view .card h4{font-size:10px;line-height:1.5;flex-wrap:wrap}
+.phone-view .card h4 .tagline{font-family:var(--font)}
+.phone-view .brand,.hub-view .brand{letter-spacing:.12em}
+.hub-view .home-heading{font-size:26px;line-height:1.35}
+.hub-view .approval-panel h3{font-size:16px;line-height:1.5}
+.hub-view .assistant-heading b{font-size:11px;line-height:1.6}
+
+.phone-view .card,.phone-view .msg.cure,.hub-view .panel,.hub-view .air{
+  background:linear-gradient(145deg,#101C30B8,#0B14228C);
+  border-color:#E0EBFC18;
+  backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px 0 #E0EBFC06,0 10px 30px #00000015;
+}
+.phone-view .msg.you{background:#22395499;backdrop-filter:blur(14px);border-color:#E0EBFC1C}
+.phone-view .tabs,.phone-view .chatbox{
+  background:#0B1422B8;
+  backdrop-filter:blur(22px);
+}
+.phone-view .tabs{border-color:#E0EBFC18}
+.phone-view .chatbox input,.hub-view #ask input{background:#0B142290;border-color:#E0EBFC22;backdrop-filter:blur(16px)}
+.phone-view .tabs button .i,.hub-view .assistant-mark,.phone-view .orb{opacity:.6;transition:opacity .2s,filter .2s}
+.phone-view .tabs button:hover .i,.phone-view .tabs button:focus-visible .i,
+.hub-view .assistant-mark:hover,.phone-view .orb:hover{opacity:.85}
+.phone-view .tabs button.on .i{opacity:.75;filter:drop-shadow(0 0 8px #FF870044)}
+.phone-view .mic-button,.hub-view .mic-button{color:#E0EBFC80;background:#101C3055;border-color:#E0EBFC18}
+.mic-button svg{width:18px;height:18px;display:block;opacity:.6}
+.mic-button.is-listening svg{opacity:1;color:var(--accent)}
+@media (prefers-reduced-transparency:reduce){
+  .phone-view .card,.phone-view .msg.cure,.hub-view .panel,.hub-view .air{background:var(--panel)}
+}

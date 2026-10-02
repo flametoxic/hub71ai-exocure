@@ -1,0 +1,356 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: 'synthetic-demo: REPLACE with a real sourced value (OSM routing, ADREC,
+    ADEK)'
+od:
+  A:
+    home|school|car:
+      peak:
+        dist: triangular
+        low: 10
+        mode: 18
+        high: 30
+      offpeak:
+        dist: triangular
+        low: 7
+        mode: 12
+        high: 18
+    school|home|car:
+      peak:
+        dist: triangular
+        low: 10
+        mode: 18
+        high: 30
+      offpeak:
+        dist: triangular
+        low: 7
+        mode: 12
+        high: 18
+    home|office|car:
+      peak:
+        dist: triangular
+        low: 15
+        mode: 25
+        high: 40
+      offpeak:
+        dist: triangular
+        low: 10
+        mode: 18
+        high: 25
+    office|home|car:
+      peak:
+        dist: triangular
+        low: 15
+        mode: 25
+        high: 40
+      offpeak:
+        dist: triangular
+        low: 10
+        mode: 18
+        high: 25
+    home|park|walk:
+      peak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+      offpeak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+    home|client|car:
+      peak:
+        dist: triangular
+        low: 18
+        mode: 28
+        high: 42
+      offpeak:
+        dist: triangular
+        low: 10
+        mode: 18
+        high: 26
+    home|hub71|car:
+      peak:
+        dist: triangular
+        low: 25
+        mode: 35
+        high: 50
+      offpeak:
+        dist: triangular
+        low: 13
+        mode: 18
+        high: 24
+  B:
+    home|school|car:
+      peak:
+        dist: triangular
+        low: 22
+        mode: 30
+        high: 42
+      offpeak:
+        dist: triangular
+        low: 19
+        mode: 24
+        high: 30
+    school|home|car:
+      peak:
+        dist: triangular
+        low: 22
+        mode: 30
+        high: 42
+      offpeak:
+        dist: triangular
+        low: 19
+        mode: 24
+        high: 30
+    home|office|car:
+      peak:
+        dist: triangular
+        low: 27
+        mode: 37
+        high: 52
+      offpeak:
+        dist: triangular
+        low: 22
+        mode: 30
+        high: 37
+    office|home|car:
+      peak:
+        dist: triangular
+        low: 27
+        mode: 37
+        high: 52
+      offpeak:
+        dist: triangular
+        low: 22
+        mode: 30
+        high: 37
+    home|park|walk:
+      peak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+      offpeak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+    home|client|car:
+      peak:
+        dist: triangular
+        low: 30
+        mode: 40
+        high: 54
+      offpeak:
+        dist: triangular
+        low: 22
+        mode: 30
+        high: 38
+    home|hub71|car:
+      peak:
+        dist: triangular
+        low: 37
+        mode: 47
+        high: 62
+      offpeak:
+        dist: triangular
+        low: 25
+        mode: 30
+        high: 36
+  C:
+    home|school|car:
+      peak:
+        dist: triangular
+        low: 16
+        mode: 24
+        high: 36
+      offpeak:
+        dist: triangular
+        low: 13
+        mode: 18
+        high: 24
+    school|home|car:
+      peak:
+        dist: triangular
+        low: 16
+        mode: 24
+        high: 36
+      offpeak:
+        dist: triangular
+        low: 13
+        mode: 18
+        high: 24
+    home|office|car:
+      peak:
+        dist: triangular
+        low: 21
+        mode: 31
+        high: 46
+      offpeak:
+        dist: triangular
+        low: 16
+        mode: 24
+        high: 31
+    office|home|car:
+      peak:
+        dist: triangular
+        low: 21
+        mode: 31
+        high: 46
+      offpeak:
+        dist: triangular
+        low: 16
+        mode: 24
+        high: 31
+    home|park|walk:
+      peak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+      offpeak:
+        dist: triangular
+        low: 0
+        mode: 0
+        high: 0.1
+    home|client|car:
+      peak:
+        dist: triangular
+        low: 24
+        mode: 34
+        high: 48
+      offpeak:
+        dist: triangular
+        low: 16
+        mode: 24
+        high: 32
+    home|hub71|car:
+      peak:
+        dist: triangular
+        low: 31
+        mode: 41
+        high: 56
+      offpeak:
+        dist: triangular
+        low: 19
+        mode: 24
+        high: 30
+walk_m:
+  A:
+    school_am:
+      value: 80
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_am:
+      value: 150
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    school_pm:
+      value: 80
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    park:
+      value: 250
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_pm:
+      value: 150
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  B:
+    school_am:
+      value: 350
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_am:
+      value: 400
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    school_pm:
+      value: 350
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    park:
+      value: 900
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_pm:
+      value: 400
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  C:
+    school_am:
+      value: 200
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_am:
+      value: 250
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    school_pm:
+      value: 200
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    park:
+      value: 500
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    office_pm:
+      value: 250
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+rent_aed_month:
+  A:
+    value: 15500
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  B:
+    value: 11000
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  C:
+    value: 13000
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+typical_listing:
+  A: apt_west
+  B: apt_north
+  C: apt_north
+trip_cost_aed_per_min:
+  value: 1.1
+  source: 'synthetic-demo: REPLACE with a real sourced value'
+car:
+  ownership_aed_month:
+    value: 3500
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  fuel_aed_per_min:
+    value: 0.35
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+taxi:
+  base_aed:
+    value: 12
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  aed_per_min:
+    value: 1.1
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  wait_min:
+    dist: triangular
+    low: 3
+    mode: 8
+    high: 15
+  wait_indoor_booked_min:
+    dist: triangular
+    low: 0
+    mode: 0
+    high: 1
+errands:
+  medical:
+    from_home_min:
+      value: 15
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  pharmacy:
+    from_home_min:
+      value: 8
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  keys:
+    from_home_min:
+      value: 10
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  hop_min:
+    value: 7
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+school_fees_aed_month:
+  A:
+    value: 4200
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  B:
+    value: 3600
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  C:
+    value: 3900
+    source: 'synthetic-demo: REPLACE with a real sourced value'

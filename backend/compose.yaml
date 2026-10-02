@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      CURE_LANGUAGE_MODE: "${CURE_LANGUAGE_MODE:-local}"
+      CURE_REAL_CITY: "${CURE_REAL_CITY:-1}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      OPENAI_MODEL: "${OPENAI_MODEL:-gpt-6.1-sol}"
+      OPENAI_EMBED_MODEL: "${OPENAI_EMBED_MODEL:-text-embedding-3-small}"
+      OPENAI_MODEL_AGENT: "${OPENAI_MODEL_AGENT:-}"
+      OPENAI_REASONING_EFFORT: "${OPENAI_REASONING_EFFORT:-medium}"
+      CURE_CORS_ORIGINS: "${CURE_CORS_ORIGINS:-http://localhost:3000,http://localhost:5173}"
+      ARRIVAL_TEMPLATE_KEY: "${ARRIVAL_TEMPLATE_KEY:-demo-template-key-change-me}"
+      ARRIVAL_VAULT_KEY: "${ARRIVAL_VAULT_KEY:-demo-vault-key-change-me-0001}"
+      ARRIVAL_CORE_KEY: "${ARRIVAL_CORE_KEY:-demo-core-key-change-me-00001}"
+    volumes:
+      - cure_core:/data/core_store
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,urllib.request; assert json.load(urllib.request.urlopen('http://127.0.0.1:8000/health'))['ready']"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  cure_core:

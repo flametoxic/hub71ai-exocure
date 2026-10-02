@@ -216,3 +216,49 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CURE resident ciphertext and verification artifacts
+backend/core_store/
+artifacts/
+
+# Private handoff notes and generated archives
+*.md
+!README.md
+!**/README.md
+!backend/VENDORED.md
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.patch
+*.diff
+*.pdf
+*.doc
+*.docx
+MANIFEST.sha256.json
+
+# Local IDE / agent state
+.idea/
+.vscode/
+.codex/
+.agents/
+
+# Credentials and local certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Local databases and operating-system metadata
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+.DS_Store
+Thumbs.db
+Desktop.ini

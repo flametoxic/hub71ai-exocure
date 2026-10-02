@@ -1,0 +1,197 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: fictional family for the demo
+pseudonym:
+  value: p-7f3a
+  decided_by: TokenVault
+household:
+- id: leila
+  role: adult
+  name:
+    ru: Лейла
+    en: Leila
+- id: husband
+  role: adult
+  name:
+    ru: муж
+    en: your husband
+- id: daughter
+  role: child
+  name:
+    ru: дочь
+    en: your daughter
+- id: son
+  role: child
+  name:
+    ru: Адам
+    en: Adam
+flags:
+  has_school_children: true
+  founder: true
+params:
+  setpoint_c:
+    value: 24.0
+    decided_by: user
+  value_of_time_aed_per_h:
+    value: 60
+    decided_by: user
+  budget_aed_month:
+    value: 18000
+    decided_by: user
+device_only:
+  son:
+    condition: asthma
+constraints:
+  son:
+    pm10_ugm3_max:
+      value: 50
+      decided_by: user
+    outdoor_harsh_min_max:
+      value: 0
+      decided_by: user
+occupancy_by_hour:
+- 4
+- 4
+- 4
+- 4
+- 4
+- 4
+- 4
+- 1
+- 1
+- 1
+- 1
+- 1
+- 1
+- 1
+- 1
+- 3
+- 3
+- 3
+- 4
+- 4
+- 4
+- 4
+- 4
+- 4
+trips:
+- id: school_am
+  who:
+  - husband
+  - daughter
+  - son
+  from: home
+  to: school
+  mode: car
+  depart_h: 7
+  arrive_by_min: 465
+  usual_depart_min: 450
+- id: office_am
+  who:
+  - leila
+  from: home
+  to: office
+  mode: car
+  depart_h: 8
+  arrive_by_min: 570
+  usual_depart_min: 510
+- id: school_pm
+  who:
+  - husband
+  - daughter
+  - son
+  from: school
+  to: home
+  mode: car
+  depart_h: 14
+- id: park
+  who:
+  - daughter
+  - son
+  from: home
+  to: park
+  mode: walk
+  depart_h: 17
+- id: office_pm
+  who:
+  - leila
+  from: office
+  to: home
+  mode: car
+  depart_h: 18
+grants:
+  actions:
+  - recompute
+  - notify
+  - propose_visit_window
+  - propose_listing
+  - draft_checklist
+  - request_confirmation
+  agent_tools:
+  - search_public
+  - draft_text
+  cure_actions:
+  - propose_visit_window
+  - propose_listing
+  - precool_home
+  - calendar_event
+  - reminder
+  - budget_rule
+  - dispatch_ramp_car
+  cure_approval_required:
+  - propose_visit_window
+  - propose_listing
+  - precool_home
+  - calendar_event
+  - reminder
+  - budget_rule
+  - dispatch_ramp_car
+  never_display:
+  - move money
+  - sign contracts
+  - send forms or messages for you
+  - book appointments without you
+  scopes:
+  - documents_status
+  - housing
+  - finance
+  - family
+  - health_local
+  - business
+  approval_required:
+  - propose_visit_window
+  - propose_listing
+  vision_consent: true
+resident_local_id:
+  value: device:leila
+  decided_by: device
+consents:
+- purpose_id: arrival_planning
+  data_category: household
+  scope:
+  - arrival
+- purpose_id: arrival_cost
+  data_category: finance
+  scope:
+  - arrival
+- purpose_id: arrival_vision
+  data_category: constraints
+  scope:
+  - arrival
+district_choices_demo:
+- options:
+  - A
+  - B
+  - C
+  chosen: A
+  decided_by: user
+setpoint_observations_demo:
+  value:
+  - 23.5
+  - 24.0
+  decided_by: user
+voice_example: We're moving to Abu Dhabi, four of us. I'm a founder at Hub71, two
+  kids going to school, my son has asthma, housing budget up to 18,000 a month
+voice_example_ru: Мы переезжаем в Абу-Даби вчетвером, я основатель стартапа в Hub71,
+  двое детей в школу, у сына астма, бюджет на жильё до 18 000 в месяц

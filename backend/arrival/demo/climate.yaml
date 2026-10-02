@@ -1,0 +1,1500 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: 'synthetic-demo: REPLACE with a real sourced value'
+months:
+  jan:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 15.0
+      - 17.6
+      - 20.0
+      - 22.1
+      - 23.7
+      - 24.7
+      - 25.0
+      - 24.7
+      - 23.7
+      - 22.1
+      - 20.0
+      - 17.6
+      - 15.0
+      - 15.0
+      - 15.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 168.0
+      - 325.0
+      - 460.0
+      - 563.0
+      - 628.0
+      - 650.0
+      - 628.0
+      - 563.0
+      - 460.0
+      - 325.0
+      - 168.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  feb:
+    days:
+      value: 28
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 16.0
+      - 18.6
+      - 21.0
+      - 23.1
+      - 24.7
+      - 25.7
+      - 26.0
+      - 25.7
+      - 24.7
+      - 23.1
+      - 21.0
+      - 18.6
+      - 16.0
+      - 16.0
+      - 16.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 186.0
+      - 360.0
+      - 509.0
+      - 624.0
+      - 695.0
+      - 720.0
+      - 695.0
+      - 624.0
+      - 509.0
+      - 360.0
+      - 186.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  mar:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 19.0
+      - 21.8
+      - 24.5
+      - 26.8
+      - 28.5
+      - 29.6
+      - 30.0
+      - 29.6
+      - 28.5
+      - 26.8
+      - 24.5
+      - 21.8
+      - 19.0
+      - 19.0
+      - 19.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 207.0
+      - 400.0
+      - 566.0
+      - 693.0
+      - 773.0
+      - 800.0
+      - 773.0
+      - 693.0
+      - 566.0
+      - 400.0
+      - 207.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  apr:
+    days:
+      value: 30
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 22.0
+      - 25.1
+      - 28.0
+      - 30.5
+      - 32.4
+      - 33.6
+      - 34.0
+      - 33.6
+      - 32.4
+      - 30.5
+      - 28.0
+      - 25.1
+      - 22.0
+      - 22.0
+      - 22.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 225.0
+      - 435.0
+      - 615.0
+      - 753.0
+      - 840.0
+      - 870.0
+      - 840.0
+      - 753.0
+      - 615.0
+      - 435.0
+      - 225.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  may:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 26.0
+      - 29.4
+      - 32.5
+      - 35.2
+      - 37.3
+      - 38.6
+      - 39.0
+      - 38.6
+      - 37.3
+      - 35.2
+      - 32.5
+      - 29.4
+      - 26.0
+      - 26.0
+      - 26.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 238.0
+      - 460.0
+      - 651.0
+      - 797.0
+      - 889.0
+      - 920.0
+      - 889.0
+      - 797.0
+      - 651.0
+      - 460.0
+      - 238.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  jun:
+    days:
+      value: 30
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 29.0
+      - 32.1
+      - 35.0
+      - 37.5
+      - 39.4
+      - 40.6
+      - 41.0
+      - 40.6
+      - 39.4
+      - 37.5
+      - 35.0
+      - 32.1
+      - 29.0
+      - 29.0
+      - 29.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 243.0
+      - 470.0
+      - 665.0
+      - 814.0
+      - 908.0
+      - 940.0
+      - 908.0
+      - 814.0
+      - 665.0
+      - 470.0
+      - 243.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  jul:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 34.4
+      - 37.5
+      - 40.2
+      - 42.3
+      - 43.6
+      - 44.0
+      - 43.6
+      - 42.3
+      - 40.2
+      - 37.5
+      - 34.4
+      - 31.0
+      - 31.0
+      - 31.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 246.0
+      - 475.0
+      - 672.0
+      - 823.0
+      - 918.0
+      - 950.0
+      - 918.0
+      - 823.0
+      - 672.0
+      - 475.0
+      - 246.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  aug:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 34.1
+      - 37.0
+      - 39.5
+      - 41.4
+      - 42.6
+      - 43.0
+      - 42.6
+      - 41.4
+      - 39.5
+      - 37.0
+      - 34.1
+      - 31.0
+      - 31.0
+      - 31.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 110
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 233.0
+      - 450.0
+      - 636.0
+      - 779.0
+      - 869.0
+      - 900.0
+      - 869.0
+      - 779.0
+      - 636.0
+      - 450.0
+      - 233.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  sep:
+    days:
+      value: 30
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 28.0
+      - 31.1
+      - 34.0
+      - 36.5
+      - 38.4
+      - 39.6
+      - 40.0
+      - 39.6
+      - 38.4
+      - 36.5
+      - 34.0
+      - 31.1
+      - 28.0
+      - 28.0
+      - 28.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 90
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 223.0
+      - 430.0
+      - 608.0
+      - 745.0
+      - 831.0
+      - 860.0
+      - 831.0
+      - 745.0
+      - 608.0
+      - 430.0
+      - 223.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  oct:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 25.0
+      - 27.8
+      - 30.5
+      - 32.8
+      - 34.5
+      - 35.6
+      - 36.0
+      - 35.6
+      - 34.5
+      - 32.8
+      - 30.5
+      - 27.8
+      - 25.0
+      - 25.0
+      - 25.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 80
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 202.0
+      - 390.0
+      - 552.0
+      - 675.0
+      - 753.0
+      - 780.0
+      - 753.0
+      - 675.0
+      - 552.0
+      - 390.0
+      - 202.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  nov:
+    days:
+      value: 30
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 20.0
+      - 22.8
+      - 25.5
+      - 27.8
+      - 29.5
+      - 30.6
+      - 31.0
+      - 30.6
+      - 29.5
+      - 27.8
+      - 25.5
+      - 22.8
+      - 20.0
+      - 20.0
+      - 20.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 70
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 179.0
+      - 345.0
+      - 488.0
+      - 598.0
+      - 666.0
+      - 690.0
+      - 666.0
+      - 598.0
+      - 488.0
+      - 345.0
+      - 179.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  dec:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 17.0
+      - 19.6
+      - 22.0
+      - 24.1
+      - 25.7
+      - 26.7
+      - 27.0
+      - 26.7
+      - 25.7
+      - 24.1
+      - 22.0
+      - 19.6
+      - 17.0
+      - 17.0
+      - 17.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 166.0
+      - 320.0
+      - 453.0
+      - 554.0
+      - 618.0
+      - 640.0
+      - 618.0
+      - 554.0
+      - 453.0
+      - 320.0
+      - 166.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  aug_dust:
+    days:
+      value: 31
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_c:
+      value:
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 31.0
+      - 34.1
+      - 37.0
+      - 39.5
+      - 41.4
+      - 42.6
+      - 43.0
+      - 42.6
+      - 41.4
+      - 39.5
+      - 37.0
+      - 34.1
+      - 31.0
+      - 31.0
+      - 31.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    temperature_sd_c:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    humidity_pct:
+      value:
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    pm10_ugm3:
+      value:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 550
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      - 60
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    ghi_wm2:
+      value:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 181.0
+      - 350.0
+      - 495.0
+      - 606.0
+      - 676.0
+      - 700.0
+      - 676.0
+      - 606.0
+      - 495.0
+      - 350.0
+      - 181.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'

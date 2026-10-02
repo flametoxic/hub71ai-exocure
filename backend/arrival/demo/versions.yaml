@@ -1,0 +1,25 @@
+meta:
+  data_mode: synthetic
+  source_kind: config
+teacher:
+  schema_version: v1
+  ontology_version: v1
+  topology_version: v1
+  scm_version: v1
+  dynamics_version: v1
+  policy_version: v1
+  skill_version: v1
+  adapter_version: v1
+  model_version: v1
+  site_pack_version: v1
+student:
+  schema_version: v1
+  ontology_version: v1
+  topology_version: v1
+  scm_version: v1
+  dynamics_version: v1
+  policy_version: v1
+  skill_version: v1
+  adapter_version: v1
+  model_version: v1
+  site_pack_version: v1

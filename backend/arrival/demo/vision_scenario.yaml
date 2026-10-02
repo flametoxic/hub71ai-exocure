@@ -1,0 +1,489 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: vision scene — demo synthetic
+links:
+  airport:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+  car:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+  road:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+  building:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+  home:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+  grid:
+    physical_safe: true
+    authorized: true
+    human_approved: true
+    data_age_s: 10.0
+    confidence: 0.9
+    stages_s:
+      sense: 0.2
+      validation: 0.1
+      network: 0.3
+      state: 0.1
+      reasoning: 0.5
+      policy: 0.1
+      actuation: 0.5
+arrival:
+  month: aug
+  arrival_h: 20
+  flight_delay_h: 3
+  without:
+    walk_to_taxi_m:
+      value: 350
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    taxi_wait_min:
+      dist: triangular
+      low: 5
+      mode: 12
+      high: 25
+    walk_home_m:
+      value: 120
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  with:
+    walk_to_taxi_m:
+      value: 0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    taxi_wait_min:
+      dist: fixed
+      value: 0.0
+    walk_home_m:
+      value: 0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+storm:
+  pm10_ugm3:
+    value: 600
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  perception_confidence:
+    value: 0.6
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  v2x_latency_ms:
+    value: 80.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+av_normal:
+  perception_confidence:
+    value: 0.95
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  v2x_latency_ms:
+    value: 40.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+neighbors:
+  candidates:
+  - action_id: lobby_purge_max
+    dust_exposure: 0.0
+    neighbor_discomfort: 3.0
+    energy_kwh: 6.0
+    feasibility:
+      safety: true
+      law: true
+      contract: true
+      capacity: false
+    note: noise and draught above the neighbours' limit
+    note_ru: шум и сквозняк выше предела для соседей
+  - action_id: lobby_purge_timed
+    dust_exposure: 0.5
+    neighbor_discomfort: 0.5
+    energy_kwh: 3.0
+    feasibility:
+      safety: true
+      law: true
+      contract: true
+      capacity: true
+    note: lobby purge 15 minutes before arrival
+    note_ru: продувка за 15 минут до приезда
+  - action_id: no_change
+    dust_exposure: 4.0
+    neighbor_discomfort: 0.0
+    energy_kwh: 0.0
+    feasibility:
+      safety: true
+      law: true
+      contract: true
+      capacity: true
+    note: do nothing
+    note_ru: ничего не делать
+  stakeholders:
+  - stakeholder_id: p-7f3a
+    objectives:
+    - dust_exposure
+    action_scope:
+    - building.lobby_ventilation
+  - stakeholder_id: floor_residents
+    objectives:
+    - neighbor_discomfort
+    action_scope:
+    - building.lobby_ventilation
+  - stakeholder_id: building_operator
+    objectives:
+    - energy_kwh
+    action_scope:
+    - building.lobby_ventilation
+  proposals:
+  - stakeholder_id: p-7f3a
+    objective: dust_exposure
+    constraints:
+      dust_exposure: 1.0
+    priority: 1.0
+    evidence_refs:
+    - constraint:pm10_max
+    action_envelope:
+    - building.lobby_ventilation
+  - stakeholder_id: floor_residents
+    objective: neighbor_discomfort
+    constraints:
+      neighbor_discomfort: 1.0
+    priority: 1.0
+    evidence_refs:
+    - house_rules
+    action_envelope:
+    - building.lobby_ventilation
+cohort:
+  families:
+  - id: p-7f3a
+    who: 'Leila: four, a child who must avoid dust'
+    arrival_day: 0
+    arrival_h: 20
+    limits:
+      pm10_ugm3_max: 50
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: 'Лейла: четверо, ребёнку нельзя в пыль'
+  - id: f-02
+    who: Elderly couple, wheelchair
+    arrival_day: 0
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: true
+    slowest_member:
+      mobility_aid: 1
+      heavy_items: 0
+    who_ru: Пожилая пара, коляска
+  - id: f-03
+    who: Family with a newborn
+    arrival_day: 0
+    arrival_h: 16
+    limits:
+      pm10_ugm3_max: 50
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Семья с новорождённым
+  - id: f-04
+    who: Student, alone
+    arrival_day: 0
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Студент, один
+  - id: f-05
+    who: Engineer after a night shift
+    arrival_day: 1
+    arrival_h: 23
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Инженер после ночной смены
+  - id: f-06
+    who: Three kids and heavy luggage
+    arrival_day: 0
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 1
+    who_ru: Трое детей и большой багаж
+  - id: f-07
+    who: Grandmother visiting, struggles in heat
+    arrival_day: 1
+    arrival_h: 16
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Бабушка к внукам, тяжело в жару
+  - id: f-08
+    who: Person with a guide dog
+    arrival_day: 1
+    arrival_h: 9
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 1
+      heavy_items: 0
+    who_ru: Человек с собакой-поводырём
+  - id: f-09
+    who: Couple, one must avoid dust
+    arrival_day: 1
+    arrival_h: 20
+    limits:
+      pm10_ugm3_max: 50
+      outdoor_harsh_min_max: 5
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Пара, одному нельзя в пыль
+  - id: f-10
+    who: Doctor, straight to a shift
+    arrival_day: 1
+    arrival_h: 6
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Врач, сразу на смену
+  - id: f-11
+    who: Child in a wheelchair
+    arrival_day: 2
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: true
+    slowest_member:
+      mobility_aid: 1
+      heavy_items: 0
+    who_ru: Ребёнок на коляске
+  - id: f-12
+    who: Musician with instruments
+    arrival_day: 2
+    arrival_h: 20
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 1
+    who_ru: Музыкант с инструментами
+  - id: f-13
+    who: Retiree after surgery
+    arrival_day: 2
+    arrival_h: 16
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: true
+    slowest_member:
+      mobility_aid: 1
+      heavy_items: 0
+    who_ru: Пенсионер после операции
+  - id: f-14
+    who: Young couple on a budget
+    arrival_day: 2
+    arrival_h: 9
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Молодая пара, экономят
+  - id: f-15
+    who: Family expecting a baby
+    arrival_day: 3
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Семья, ждут ребёнка
+  - id: f-16
+    who: Athlete at a training camp
+    arrival_day: 3
+    arrival_h: 16
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Спортсмен на сборы
+  - id: f-17
+    who: Two toddlers
+    arrival_day: 3
+    arrival_h: 20
+    limits:
+      pm10_ugm3_max: 50
+      outdoor_harsh_min_max: 0
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Двое малышей
+  - id: f-18
+    who: Scientist with equipment
+    arrival_day: 4
+    arrival_h: 23
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 1
+    who_ru: Учёный с оборудованием
+  - id: f-19
+    who: Elderly man with a cane
+    arrival_day: 5
+    arrival_h: 13
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: 5
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 1
+      heavy_items: 0
+    who_ru: Пожилой мужчина с тростью
+  - id: f-20
+    who: Family with teenagers
+    arrival_day: 6
+    arrival_h: 9
+    limits:
+      pm10_ugm3_max: null
+      outdoor_harsh_min_max: null
+      accessible_vehicle: false
+    slowest_member:
+      mobility_aid: 0
+      heavy_items: 0
+    who_ru: Семья с подростками
+  arrival_window_days:
+    value: 7
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  visits_per_family:
+    value: 2
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  centers:
+    value:
+    - medical
+    - icp
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  fleet_size:
+    value: 25
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  accessible_fleet_size:
+    value: 1
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  rides_per_hour_per_car:
+    value: 1.5
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  ramp_rides_per_hour_per_car:
+    value: 1.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  arrival_hours:
+    value:
+    - 6
+    - 9
+    - 13
+    - 16
+    - 20
+    - 23
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  accessible_taxi_wait_min_without:
+    dist: triangular
+    low: 15
+    mode: 35
+    high: 90
+  apartment_cooling_kw:
+    dist: uniform
+    low: 2.0
+    high: 4.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  chiller_peak_capacity_kw:
+    value: 120
+    source: 'synthetic-demo: REPLACE with a real sourced value'

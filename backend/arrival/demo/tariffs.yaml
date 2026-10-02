@@ -1,0 +1,8 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: 'synthetic-demo: REPLACE with a real sourced value (DoE / ADDC)'
+electricity_per_kwh:
+  residential:
+    value: 0.3
+    source: 'synthetic-demo: REPLACE with a real sourced value'

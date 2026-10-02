@@ -1,0 +1,70 @@
+schema_version: "1"
+domains:
+  - {id: profile, title: Resident profile}
+  - {id: relocation, title: Relocation and documents}
+  - {id: housing, title: Housing and district cost}
+  - {id: apartment, title: Apartment thermal behavior}
+  - {id: mobility, title: Mobility and outdoor exposure}
+  - {id: schedule, title: Daily and weekly planning}
+  - {id: consent, title: Consent trust and actions}
+  - {id: city, title: City operations}
+  - {id: cohort, title: Cohort coordination}
+  - {id: learning, title: Learning boundary}
+
+variables:
+  - {id: household_size, domain: profile, title: Household size, value_type: integer, unit: count, roles: [observation], privacy: personal, models: [resident_profile], missing_policy: optional}
+  - {id: children_count, domain: profile, title: Children, value_type: integer, unit: count, roles: [observation], privacy: personal, models: [resident_profile], missing_policy: optional}
+  - {id: is_founder, domain: profile, title: Founder, value_type: boolean, unit: boolean, roles: [observation], privacy: personal, models: [resident_profile], missing_policy: optional}
+  - {id: arrival_date, domain: relocation, title: Arrival date, value_type: date, unit: date, roles: [observation], privacy: personal, models: [relocation_plan], missing_policy: required}
+  - {id: visa_delay_days, domain: relocation, title: Visa delay, value_type: number, unit: days, roles: [intervention], privacy: personal, models: [relocation_plan], missing_policy: optional, minimum: 0, maximum: 365, grounding_terms: [visa, visa delay, "\u0432\u0438\u0437\u0430", "\u0432\u0438\u0437\u044b", "\u0437\u0430\u0434\u0435\u0440\u0436\u043a\u0430 \u0432\u0438\u0437\u044b"]}
+  - {id: medical_duration_days, domain: relocation, title: Medical process duration, value_type: number, unit: days, roles: [observation], privacy: sealed, models: [relocation_plan], missing_policy: optional}
+  - {id: relocation_ready_days, domain: relocation, title: Days until ready, value_type: number, unit: days, roles: [output], privacy: personal, models: [relocation_plan], missing_policy: computed}
+  - {id: housing_budget_aed_month, domain: housing, title: Monthly housing budget, value_type: number, unit: AED/month, roles: [observation], privacy: personal, models: [district_cost], missing_policy: declinable}
+  - {id: district_recommendation, domain: housing, title: District recommendation, value_type: text, unit: text, roles: [output], privacy: personal, models: [district_cost], missing_policy: computed}
+  - {id: preferred_setpoint_c, domain: apartment, title: Preferred indoor temperature, value_type: number, unit: degC, roles: [observation], privacy: personal, models: [thermal_home], missing_policy: optional}
+  - {id: cooling_cost_aed_month, domain: apartment, title: Cooling cost, value_type: number, unit: AED/month, roles: [output], privacy: personal, models: [thermal_home], missing_policy: computed}
+  - {id: pm10_limit_ugm3, domain: mobility, title: PM10 physical limit, value_type: number, unit: ug/m3, roles: [observation], privacy: sealed, models: [outdoor_plan], missing_policy: optional}
+  - {id: outdoor_minutes, domain: mobility, title: Outdoor exposure, value_type: number, unit: minutes, roles: [output], privacy: personal, models: [outdoor_plan], missing_policy: computed}
+  - {id: return_home_hour, domain: schedule, title: Return home time, value_type: number, unit: hours, roles: [observation], privacy: personal, models: [weekly_plan], missing_policy: optional}
+  - {id: daily_plan, domain: schedule, title: Daily plan, value_type: object, unit: unitless, roles: [output], privacy: personal, models: [weekly_plan], missing_policy: computed}
+  - {id: consent_purpose, domain: consent, title: Consent purpose, value_type: text, unit: text, roles: [observation], privacy: personal, models: [consent_policy], missing_policy: required}
+  - {id: action_proposal, domain: consent, title: Action proposal, value_type: object, unit: unitless, roles: [output], privacy: personal, models: [consent_policy], missing_policy: computed}
+  - {id: city_temperature_c, domain: city, title: City temperature, value_type: number, unit: degC, roles: [observation], privacy: public, models: [city_context], missing_policy: optional}
+  - {id: city_context_result, domain: city, title: City context, value_type: object, unit: unitless, roles: [output], privacy: public, models: [city_context], missing_policy: computed}
+  - {id: cohort_constraints, domain: cohort, title: Aggregate constraints, value_type: object, unit: unitless, roles: [observation], privacy: aggregate, models: [cohort_coordination], missing_policy: optional}
+  - {id: cohort_result, domain: cohort, title: Cohort result, value_type: object, unit: unitless, roles: [output], privacy: aggregate, models: [cohort_coordination], missing_policy: computed}
+  - {id: observed_duration_days, domain: learning, title: Observed duration, value_type: number, unit: days, roles: [observation], privacy: aggregate, models: [learning_candidate], missing_policy: optional}
+  - {id: learning_candidate, domain: learning, title: Reviewable learning candidate, value_type: object, unit: unitless, roles: [output], privacy: aggregate, models: [learning_candidate], missing_policy: computed}
+
+models:
+  - {id: resident_profile, domain: profile, version: "1", title: Resident profile}
+  - {id: relocation_plan, domain: relocation, version: "1", title: Relocation plan}
+  - {id: district_cost, domain: housing, version: "1", title: District cost, objectives: [money, time, comfort]}
+  - {id: thermal_home, domain: apartment, version: "1", title: Thermal home}
+  - {id: outdoor_plan, domain: mobility, version: "1", title: Outdoor plan, objectives: [exposure, time]}
+  - {id: weekly_plan, domain: schedule, version: "1", title: Weekly plan, objectives: [time, comfort]}
+  - {id: consent_policy, domain: consent, version: "1", title: Consent policy}
+  - {id: city_context, domain: city, version: "1", title: City context}
+  - {id: cohort_coordination, domain: cohort, version: "1", title: Cohort coordination}
+  - {id: learning_candidate, domain: learning, version: "1", title: Learning candidate}
+
+mechanisms:
+  - {id: relocation_engine, model_id: relocation_plan, model_version: "1", inputs: [arrival_date, visa_delay_days, medical_duration_days], output: relocation_ready_days, adapter: relocation.simulate, formula: CURE relocation dependency graph, version: "1"}
+  - {id: district_engine, model_id: district_cost, model_version: "1", inputs: [housing_budget_aed_month], output: district_recommendation, adapter: housing.optimize, formula: Pareto and personal lambda, version: "1"}
+  - {id: thermal_engine, model_id: thermal_home, model_version: "1", inputs: [preferred_setpoint_c], output: cooling_cost_aed_month, adapter: apartment.simulate, formula: RP-1R1C, version: "1"}
+  - {id: outdoor_engine, model_id: outdoor_plan, model_version: "1", inputs: [pm10_limit_ugm3], output: outdoor_minutes, adapter: mobility.optimize, formula: CITY comfort and walk time, version: "1"}
+  - {id: schedule_engine, model_id: weekly_plan, model_version: "1", inputs: [return_home_hour], output: daily_plan, adapter: schedule.optimize, formula: resident schedule constraints, version: "1"}
+  - {id: consent_engine, model_id: consent_policy, model_version: "1", inputs: [consent_purpose], output: action_proposal, adapter: consent.propose, formula: consent and trust gates, version: "1"}
+  - {id: city_engine, model_id: city_context, model_version: "1", inputs: [city_temperature_c], output: city_context_result, adapter: city.read, formula: sourced city state, version: "1"}
+  - {id: cohort_engine, model_id: cohort_coordination, model_version: "1", inputs: [cohort_constraints], output: cohort_result, adapter: cohort.compare, formula: privacy-safe cohort aggregation, version: "1"}
+  - {id: learning_engine, model_id: learning_candidate, model_version: "1", inputs: [observed_duration_days], output: learning_candidate, adapter: learning.explain, formula: review boundary, version: "1"}
+
+operations:
+  - {id: read_state, description: Read registered resident or city state, parameters: [domain]}
+  - {id: record_event, description: Record a registered observation, parameters: [variable_id, observations]}
+  - {id: simulate, description: Simulate a registered model, parameters: [model_id, interventions]}
+  - {id: compare, description: Compare registered model scenarios, parameters: [model_id, interventions]}
+  - {id: optimize, description: Optimize registered objectives within hard constraints, parameters: [model_id, objectives]}
+  - {id: explain, description: Explain a computed result, parameters: [output_id]}
+  - {id: find_levers, description: Find causal levers for a registered output, parameters: [output_id]}
+  - {id: propose_action, description: Propose but do not directly execute an action, parameters: [action, arguments]}

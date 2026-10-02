@@ -1,0 +1,65 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: queues — synthetic; an agency aggregate in a pilot
+centers:
+  medical:
+    wait_days_by_hour:
+      '8':
+        dist: triangular
+        low: 0
+        mode: 1
+        high: 3
+      '10':
+        dist: triangular
+        low: 1
+        mode: 3
+        high: 7
+      '14':
+        dist: triangular
+        low: 1
+        mode: 2
+        high: 5
+      '17':
+        dist: triangular
+        low: 0
+        mode: 2
+        high: 6
+    capacity_per_day:
+      value: 40
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    background_per_day:
+      dist: triangular
+      low: 28
+      mode: 34
+      high: 40
+  icp:
+    wait_days_by_hour:
+      '8':
+        dist: triangular
+        low: 0
+        mode: 1
+        high: 3
+      '10':
+        dist: triangular
+        low: 1
+        mode: 3
+        high: 7
+      '14':
+        dist: triangular
+        low: 1
+        mode: 2
+        high: 5
+      '17':
+        dist: triangular
+        low: 0
+        mode: 2
+        high: 6
+    capacity_per_day:
+      value: 30
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    background_per_day:
+      dist: triangular
+      low: 20
+      mode: 26
+      high: 30

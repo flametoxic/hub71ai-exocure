@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+core_store/
+node_modules/
+.electron-smoke/
+dist/
+desktop.log

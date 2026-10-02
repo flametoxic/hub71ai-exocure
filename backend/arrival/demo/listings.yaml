@@ -1,0 +1,22 @@
+meta:
+  data_mode: synthetic
+  source: flats drawn by the team
+listings:
+- id: apt_west
+  district: A
+  tariff_class: residential
+  equip_w: 300
+  windows:
+  - orientation: W
+    area_m2: 8.0
+  - orientation: S
+    area_m2: 3.0
+- id: apt_north
+  district: B
+  tariff_class: residential
+  equip_w: 300
+  windows:
+  - orientation: N
+    area_m2: 8.0
+  - orientation: E
+    area_m2: 3.0

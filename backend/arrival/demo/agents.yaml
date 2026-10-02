@@ -1,0 +1,173 @@
+meta:
+  data_mode: synthetic
+  source_kind: designed
+  source: tools/agent_designer (OpenAI) + team review
+templates:
+- id: documents
+  title: Documents
+  goal_classes:
+  - settle_by_date
+  uses:
+  - plan
+  scopes:
+  - documents_status
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - see personal data
+  - act in any system
+  - send anything for you
+  required_evidence:
+  - step_status
+  escalation_path:
+  - leila
+  completion_verification: all documents steps closed
+  reactions:
+  - event: visa_delay
+    action: draft_text
+    scope: documents_status
+    draft: employer_letter
+  design_report: 'designed with agent_designer: public TAMM pages + schema; CURE checks
+    ✓; review ✓'
+  signature: ad62a38948e0d1f54a1888830fd2b210bd233ee8fc89af97c7d1691c59422b08
+- id: housing
+  title: Housing
+  goal_classes:
+  - settle_by_date
+  uses:
+  - cost
+  - apartment
+  scopes:
+  - housing
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - contact the landlord
+  - pay
+  required_evidence:
+  - tenancy_signed
+  escalation_path:
+  - leila
+  completion_verification: tenancy registered
+  reactions:
+  - event: visa_delay
+    action: draft_text
+    scope: housing
+    draft: landlord_note
+  design_report: designed with agent_designer; CURE checks ✓; review ✓
+  signature: 81478df95fc8fcbacb214d6c2e58508bdb765a74b92d72b32cd3110fd9a48e6c
+- id: school
+  title: School and kids
+  goal_classes:
+  - settle_by_date
+  applies_if:
+    has_school_children: true
+  uses:
+  - day
+  - cost
+  scopes:
+  - family
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - submit applications
+  required_evidence:
+  - enrollment_confirmed
+  escalation_path:
+  - leila
+  completion_verification: enrolment confirmed by the school
+  reactions:
+  - event: visa_delay
+    action: draft_text
+    scope: family
+    draft: school_note
+  design_report: designed with agent_designer; CURE checks ✓; review ✓
+  signature: af8a96e532953349bda1c1ba15b1e46cdb2b30c58d35a8143c57f9677a831119
+- id: family_health
+  title: 'Family health: air and heat'
+  goal_classes:
+  - settle_by_date
+  uses:
+  - day
+  scopes:
+  - health_local
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - share a diagnosis with anyone
+  - book doctors
+  required_evidence:
+  - none
+  escalation_path:
+  - leila
+  completion_verification: none
+  reactions:
+  - event: dust_forecast
+    action: draft_text
+    scope: health_local
+    draft: dust_line
+  design_report: designed with agent_designer; CURE checks ✓; review ✓
+  signature: 3dfd32f1a381934d7234a702494003805b1624d9012b9795dcf8b659f161ea3a
+- id: budget
+  title: Budget
+  goal_classes:
+  - settle_by_date
+  uses:
+  - cost
+  - plan
+  scopes:
+  - finance
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - move money
+  required_evidence:
+  - none
+  escalation_path:
+  - leila
+  completion_verification: none
+  reactions: []
+  design_report: designed with agent_designer; CURE checks ✓; review ✓
+  signature: 75b0919b24f196aafde1fa613bf5f6f5e66b21ca36ddc792f499597aab234a55
+- id: business
+  title: Business
+  goal_classes:
+  - settle_by_date
+  applies_if:
+    founder: true
+  uses:
+  - plan
+  scopes:
+  - business
+  allowed_actions:
+  - search_public
+  - draft_text
+  approval_required: []
+  forbidden_display:
+  - sign or submit on her behalf
+  required_evidence:
+  - license_issued
+  escalation_path:
+  - leila
+  completion_verification: licence issued
+  reactions:
+  - event: car_conflict
+    action: draft_text
+    scope: business
+    draft: investor_reschedule
+  - event: license
+    action: draft_text
+    scope: business
+    draft: vacancy
+  design_report: designed with agent_designer; CURE checks ✓; review ✓
+  signature: 0afbc527fe9f51d67dcb12364ca875c97728663707eca3ba1a5b14b58ec6643a

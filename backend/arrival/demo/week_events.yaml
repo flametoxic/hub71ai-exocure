@@ -1,0 +1,80 @@
+# Leila's first full week in Abu Dhabi (Sun 22 – Sat 28 Nov 2026) — SYNTHETIC events for the demo.
+# The week is packed on purpose: overlaps, no time to travel, outdoor plans on dusty hours, work eating family
+# evenings, scattered errands, one car for two people, government steps with documents not ready yet.
+# The mind finds these problems and says which agent should fix each one; nothing moves without Leila's yes.
+# who: leila | husband | daughter | son | family     where: a place id below
+meta:
+  data_mode: synthetic
+  source: fictional family for the demo (mind)
+
+places:
+  home:        {en: "Home", ru: "Дом"}
+  hub71:       {en: "Hub71", ru: "Hub71"}
+  school:      {en: "School", ru: "Школа"}
+  icp_centre:  {en: "ICP service centre", ru: "Центр ICP"}
+  visa_med:    {en: "Visa medical test centre", ru: "Центр медкомиссии для визы"}
+  bank:        {en: "Bank branch", ru: "Отделение банка"}
+  mall:        {en: "Mall", ru: "Торговый центр"}
+  pharmacy:    {en: "Pharmacy", ru: "Аптека"}
+  storage:     {en: "Storage", ru: "Склад"}
+  adgm:        {en: "ADGM registration office", ru: "Регистрация ADGM"}
+  client:      {en: "Husband's client", ru: "Клиент мужа"}
+  restaurant:  {en: "Restaurant", ru: "Ресторан"}
+  park:        {en: "Park", ru: "Парк"}
+  beach:       {en: "Beach", ru: "Пляж"}
+  play_centre: {en: "Indoor play centre", ru: "Детский игровой центр"}
+
+events:
+  # ---- Sun 22 (weekend)
+  - {id: sun-unpack,   date: 2026-11-22, start: 9.0,  end: 11.0, who: [family], where: home, kind: family,  en: "Unpacking boxes", ru: "Разбираем коробки"}
+  - {id: sun-uniform,  date: 2026-11-22, start: 11.5, end: 13.0, who: [leila, daughter, son], where: mall, kind: errand, needs_car: true, en: "School uniforms shopping", ru: "Покупаем школьную форму"}
+  - {id: sun-emails,   date: 2026-11-22, start: 14.0, end: 15.0, who: [leila], where: home, kind: work, en: "Investor follow-up emails", ru: "Письма инвесторам после встреч"}
+  - {id: sun-park,     date: 2026-11-22, start: 17.0, end: 18.5, who: [leila, daughter, son], where: park, kind: family, outdoor: true, en: "Park with Mira and Adam", ru: "Парк с Мирой и Адамом"}
+  - {id: sun-mother,   date: 2026-11-22, start: 19.0, end: 20.0, who: [leila], where: home, kind: family, en: "Call with mother about her July visit", ru: "Звонок маме про её приезд в июле"}
+  - {id: sun-deck,     date: 2026-11-22, start: 21.0, end: 22.0, who: [leila], where: home, kind: work, en: "Pitch deck for the seed round", ru: "Питч-дек для посевного раунда"}
+  # ---- Mon 23 (dust from 09:00)
+  - {id: mon-inv,      date: 2026-11-23, start: 9.0,  end: 10.0, who: [leila], where: hub71, kind: investor, en: "Call with the seed lead investor", ru: "Звонок с лид-инвестором раунда"}
+  - {id: mon-eid,      date: 2026-11-23, start: 9.5,  end: 10.5, who: [leila], where: icp_centre, kind: gov, docs_ready: false, en: "Emirates ID biometrics", ru: "Биометрия для Emirates ID"}
+  - {id: mon-sports,   date: 2026-11-23, start: 10.0, end: 11.0, who: [son], where: school, kind: school, outdoor: true, en: "Adam: outdoor sports lesson", ru: "Адам: урок физкультуры на улице"}
+  - {id: mon-team,     date: 2026-11-23, start: 12.0, end: 13.0, who: [leila], where: hub71, kind: work, en: "Team stand-up and product review", ru: "Планёрка и разбор продукта"}
+  - {id: mon-int-a,    date: 2026-11-23, start: 14.0, end: 15.0, who: [leila], where: hub71, kind: hiring, en: "Interview: candidate A", ru: "Интервью: кандидат A"}
+  - {id: mon-int-b,    date: 2026-11-23, start: 15.0, end: 16.0, who: [leila], where: hub71, kind: hiring, en: "Interview: candidate B", ru: "Интервью: кандидат B"}
+  - {id: mon-int-c,    date: 2026-11-23, start: 16.0, end: 17.0, who: [leila], where: hub71, kind: hiring, en: "Interview: candidate C", ru: "Интервью: кандидат C"}
+  - {id: mon-dinner,   date: 2026-11-23, start: 19.5, end: 21.5, who: [leila], where: restaurant, kind: investor, movable: true, en: "Dinner with an angel investor", ru: "Ужин с бизнес-ангелом"}
+  # ---- Tue 24 (errands day)
+  - {id: tue-inv,      date: 2026-11-24, start: 9.0,  end: 10.0, who: [leila], where: hub71, kind: investor, en: "Investor calls", ru: "Звонки инвесторам"}
+  - {id: tue-med,      date: 2026-11-24, start: 10.5, end: 11.5, who: [leila], where: visa_med, kind: gov, docs_ready: false, en: "Visa medical test", ru: "Медкомиссия для визы"}
+  - {id: tue-pharm,    date: 2026-11-24, start: 12.5, end: 13.0, who: [leila], where: pharmacy, kind: errand, en: "Pharmacy", ru: "Аптека"}
+  - {id: tue-bank,     date: 2026-11-24, start: 13.5, end: 14.5, who: [leila], where: bank, kind: gov, docs_ready: false, en: "Open a bank account", ru: "Открыть счёт в банке"}
+  - {id: tue-keys,     date: 2026-11-24, start: 15.5, end: 16.0, who: [leila], where: storage, kind: errand, en: "Storage keys", ru: "Ключи от кладовой"}
+  - {id: tue-int-d,    date: 2026-11-24, start: 16.0, end: 17.0, who: [leila], where: hub71, kind: hiring, en: "Interview: candidate D", ru: "Интервью: кандидат D"}
+  - {id: tue-sim,      date: 2026-11-24, start: 17.5, end: 18.0, who: [leila], where: mall, kind: errand, en: "Phone plan and SIM", ru: "Тариф и SIM-карта"}
+  # ---- Wed 25
+  - {id: wed-inv,      date: 2026-11-25, start: 9.0,  end: 10.5, who: [leila], where: hub71, kind: investor, en: "Investor calls", ru: "Звонки инвесторам"}
+  - {id: wed-adgm,     date: 2026-11-25, start: 11.0, end: 12.0, who: [leila], where: adgm, kind: gov, docs_ready: false, en: "Company licence documents", ru: "Документы на лицензию компании"}
+  - {id: wed-ptm,      date: 2026-11-25, start: 13.0, end: 14.0, who: [leila], where: school, kind: school, en: "Parent–teacher meeting", ru: "Встреча с учителями"}
+  - {id: wed-pitch,    date: 2026-11-25, start: 15.0, end: 16.0, who: [leila], where: hub71, kind: investor, en: "Pitch at the Hub71 investor session", ru: "Питч на инвесторской сессии Hub71"}
+  - {id: wed-art,      date: 2026-11-25, start: 15.5, end: 16.0, who: [leila, daughter], where: school, kind: school, en: "Pick Mira up from the art club", ru: "Забрать Миру с кружка рисования"}
+  - {id: wed-football, date: 2026-11-25, start: 17.0, end: 18.0, who: [son], where: park, kind: family, outdoor: true, en: "Adam: football in the park", ru: "Адам: футбол в парке"}
+  - {id: wed-us,       date: 2026-11-25, start: 22.5, end: 23.5, who: [leila], where: home, kind: investor, movable: true, en: "Call with a US investor", ru: "Звонок с американским инвестором"}
+  # ---- Thu 26
+  - {id: thu-client,   date: 2026-11-26, start: 8.0,  end: 9.5,  who: [husband], where: client, kind: work, needs_car: true, movable: false, en: "Husband: client meeting", ru: "Муж: встреча с клиентом"}
+  - {id: thu-inv,      date: 2026-11-26, start: 8.5,  end: 9.5,  who: [leila], where: hub71, kind: investor, needs_car: true, movable: true, en: "Investor at Hub71", ru: "Инвестор в Hub71"}
+  - {id: thu-int-e,    date: 2026-11-26, start: 10.0, end: 11.0, who: [leila], where: hub71, kind: hiring, en: "Interview: candidate E", ru: "Интервью: кандидат E"}
+  - {id: thu-int-f,    date: 2026-11-26, start: 11.0, end: 12.0, who: [leila], where: hub71, kind: hiring, en: "Final round: candidate B", ru: "Финал: кандидат B"}
+  - {id: thu-lease,    date: 2026-11-26, start: 14.0, end: 15.0, who: [leila], where: home, kind: gov, docs_ready: false, en: "Register the tenancy contract", ru: "Регистрация договора аренды"}
+  - {id: thu-addc,     date: 2026-11-26, start: 16.0, end: 17.0, who: [leila], where: home, kind: gov, docs_ready: false, en: "Electricity and water account (ADDC)", ru: "Счёт на электричество и воду (ADDC)"}
+  - {id: thu-partner,  date: 2026-11-26, start: 19.0, end: 20.5, who: [leila], where: hub71, kind: investor, movable: true, en: "Meeting with a VC partner", ru: "Встреча с партнёром венчурного фонда"}
+  # ---- Fri 27
+  - {id: fri-inv,      date: 2026-11-27, start: 9.0,  end: 10.0, who: [leila], where: hub71, kind: investor, en: "Investor calls", ru: "Звонки инвесторам"}
+  - {id: fri-offer,    date: 2026-11-27, start: 10.0, end: 11.0, who: [leila], where: hub71, kind: hiring, en: "Offer call with the chosen engineer", ru: "Звонок-оффер выбранному инженеру"}
+  - {id: fri-assembly, date: 2026-11-27, start: 12.0, end: 13.0, who: [leila, daughter], where: school, kind: school, en: "Mira's school assembly", ru: "Школьный концерт Миры"}
+  - {id: fri-licence,  date: 2026-11-27, start: 13.5, end: 14.5, who: [leila], where: icp_centre, kind: gov, docs_ready: false, en: "Driving licence conversion", ru: "Замена водительских прав"}
+  - {id: fri-founders, date: 2026-11-27, start: 18.0, end: 21.0, who: [leila], where: hub71, kind: work, movable: true, en: "Hub71 founders' evening", ru: "Вечер основателей Hub71"}
+  - {id: fri-board,    date: 2026-11-27, start: 21.5, end: 22.5, who: [leila], where: home, kind: work, en: "Board update", ru: "Отчёт совету директоров"}
+  # ---- Sat 28 (weekend)
+  - {id: sat-delivery, date: 2026-11-28, start: 10.0, end: 12.0, who: [leila], where: home, kind: family, en: "Furniture delivery window", ru: "Окно доставки мебели"}
+  - {id: sat-party,    date: 2026-11-28, start: 11.0, end: 13.0, who: [leila, daughter], where: play_centre, kind: family, needs_car: true, en: "Mira: classmate's birthday party", ru: "Мира: день рождения одноклассника"}
+  - {id: sat-gift,     date: 2026-11-28, start: 14.0, end: 15.0, who: [leila], where: mall, kind: family, en: "Gift for her husband's birthday (12 Dec)", ru: "Подарок мужу на день рождения (12 декабря)"}
+  - {id: sat-beach,    date: 2026-11-28, start: 17.5, end: 19.0, who: [family], where: beach, kind: family, outdoor: true, en: "Beach with the family", ru: "Пляж всей семьёй"}
+  - {id: sat-neigh,    date: 2026-11-28, start: 19.5, end: 20.5, who: [family], where: home, kind: family, en: "Dinner with the new neighbours", ru: "Ужин с новыми соседями"}

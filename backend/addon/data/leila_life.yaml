@@ -1,0 +1,62 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: fictional family for the demo
+
+people:
+  leila:
+    details:
+      - {en: "Founder at Hub71: cold-chain monitoring for pharmacies", ru: "Основательница стартапа в Hub71: мониторинг холодовой цепи для аптек", source: you, category: work}
+      - {en: "Goals this quarter: seed round, first engineer hire", ru: "Цели квартала: посевной раунд, первый инженер в команду", source: you, category: work}
+      - {en: "Investor calls usually in the morning", ru: "Звонки с инвесторами обычно утром", source: you, category: rhythm}
+      - {en: "Prefers short, warm answers; informal 'you'", ru: "Любит короткие тёплые ответы, на «ты»", source: you, category: style}
+  husband:
+    details:
+      - {en: "Client meetings in the mornings; drives the family car", ru: "Утром встречи с клиентами, водит семейную машину", source: you, category: rhythm}
+      - {en: "Birthday: 12 December", ru: "День рождения: 12 декабря", source: you, category: date}
+      - {en: "What he loved doing at home — CURE hasn't asked yet", ru: "Чем любил заниматься дома — CURE ещё не спросил", source: assumption, category: open_question}
+  daughter:
+    name: {en: Mira, ru: Мира}
+    details:
+      - {en: "Curious: asks why there is no snow here", ru: "Любопытная: спрашивает, почему тут нет снега", source: you, category: preference}
+      - {en: "Loves the park in the evening", ru: "Любит парк по вечерам", source: you, category: preference}
+      - {en: "Doesn't eat basil", ru: "Не ест базилик", source: you, category: preference}
+      - {en: "Art club after school on Wednesdays", ru: "Кружок рисования по средам после школы", source: you, category: rhythm}
+  son:
+    details:
+      - {en: "Outdoor limit is set by the family; the reason is sealed", ru: "Предел для улицы задала семья; причина запечатана", source: core, category: constraint}
+      - {en: "Favourite indoor play: building sets", ru: "Любимая игра дома: конструктор", source: you, category: preference}
+  mother:
+    title: {en: "Leila's mother (visiting)", ru: "Мама Лейлы (в гостях)"}
+    details:
+      - {en: "Visits in July; needs a car to the door (reason sealed)", ru: "Приезжает в июле; нужна машина до двери (причина запечатана)", source: you, category: constraint}
+
+rhythms:
+  - {en: "Weekdays: school run in the morning, work, home in the evening", ru: "Будни: утром школа, днём работа, вечером дома", source: core}
+  - {en: "Weekend: Saturday and Sunday", ru: "Выходные: суббота и воскресенье", source: core}
+  - {en: "Kids in bed around 20:30", ru: "Дети ложатся около 20:30", source: you}
+
+places:
+  - {id: home, en: "Home (flat facing west)", ru: "Дом (квартира на запад)", source: core}
+  - {id: school, en: School, ru: Школа, source: core}
+  - {id: hub71, en: Hub71, ru: Hub71, source: you}
+  - {id: beach, en: Beach, ru: Пляж, source: core}
+  - {id: centers, en: "Medical centre and ICP", ru: "Медцентр и ICP", source: core}
+  - {id: indoor, en: "Indoor places for dusty days", ru: "Места в помещении на пыльные дни", source: core}
+
+logs:
+  beach:
+    - {date: "2026-11-28", hour: 17.5}
+    - {date: "2026-12-05", hour: 17.25}
+    - {date: "2026-12-12", hour: 17.5}
+    - {date: "2026-12-19", hour: 17.75}
+  approvals: [7.2, 7.5, 21.4, 7.1, 21.8, 7.4, 21.2]
+  setpoint: [23.5, 23.5, 24.0, 23.5]
+  meetings:
+    - {kind: investor, moved: true}
+    - {kind: investor, moved: true}
+    - {kind: investor, moved: true}
+    - {kind: client, moved: false}
+    - {kind: client, moved: false}
+    - {kind: client, moved: false}
+

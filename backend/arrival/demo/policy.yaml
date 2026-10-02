@@ -1,0 +1,619 @@
+meta:
+  data_mode: synthetic
+  source_kind: policy
+  version: arrival-policy-demo-0.2
+mc:
+  runs:
+    value: 400
+    decided_by: team
+  vision_runs:
+    value: 20
+    decided_by: team
+  interval_q:
+    value:
+    - 0.1
+    - 0.9
+    decided_by: team
+walk:
+  speed_mps:
+    value: 1.2
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  alpha:
+    value: 60.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  beta:
+    value: 30.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  dt_crowd_s:
+    value: 20.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  dt_crossing_s:
+    value: 40.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+outdoor_limits:
+  temperature_c:
+    value:
+    - 10
+    - 38
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  humidity_pct:
+    value:
+    - 20
+    - 80
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  pm10_ugm3_max:
+    value: 100
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+indoor_limits:
+  temperature:
+    value:
+    - 21
+    - 27
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  humidity:
+    value:
+    - 30
+    - 70
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+comfort:
+  t_pref_c:
+    value: 24.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  weight_temperature:
+    value: 1.0
+    decided_by: team
+  weight_humidity:
+    value: 0.0
+    decided_by: team
+  arrival_band_c:
+    value: 1.0
+    decided_by: team
+traffic:
+  peak_hours:
+    value:
+    - 7
+    - 8
+    - 17
+    - 18
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+grid:
+  peak_hours:
+    value:
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+hvac:
+  dt_s:
+    value: 600
+    decided_by: team
+  mass_flow_kg_s:
+    value: 0.3
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  specific_heat:
+    value: 1005.0
+    source: specific heat of air, reference value
+  supply_c:
+    value: 14.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+orientation_factor:
+  N:
+    value: 0.3
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  E:
+    value: 0.7
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  S:
+    value: 0.6
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  W:
+    value: 0.9
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+thermal_priors:
+  R:
+    dist: uniform
+    low: 0.012
+    high: 0.03
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  C:
+    dist: uniform
+    low: 8000000.0
+    high: 20000000.0
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  k_solar:
+    dist: uniform
+    low: 0.15
+    high: 0.4
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  k_occ:
+    dist: uniform
+    low: 70
+    high: 110
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  COP:
+    dist: uniform
+    low: 2.2
+    high: 4.5
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+thermal_answers:
+  COP:
+    old_split:
+      dist: uniform
+      low: 2.2
+      high: 3.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    new_inverter:
+      dist: uniform
+      low: 3.5
+      high: 4.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  k_solar:
+    blackout_film:
+      dist: uniform
+      low: 0.15
+      high: 0.22
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    no_film:
+      dist: uniform
+      low: 0.3
+      high: 0.4
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  R:
+    new_building:
+      dist: uniform
+      low: 0.022
+      high: 0.03
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    old_building:
+      dist: uniform
+      low: 0.012
+      high: 0.016
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+questions:
+  COP:
+    value: Is the AC an old split unit or a new inverter?
+    decided_by: team
+  k_solar:
+    value: Is there film or blackout curtains on the west windows?
+    decided_by: team
+  R:
+    value: Is the building new or older than 10 years?
+    decided_by: team
+  k_occ:
+    value: How many people are usually home during the day?
+    decided_by: team
+guard:
+  decimals:
+    value:
+    - 0
+    - 1
+    - 2
+    decided_by: team
+personal_params:
+  lambda_grid:
+    value:
+    - - 0.6
+      - 0.2
+      - 0.2
+    - - 0.2
+      - 0.6
+      - 0.2
+    - - 0.2
+      - 0.2
+      - 0.6
+    - - 0.34
+      - 0.33
+      - 0.33
+    decided_by: team
+  lambda_names:
+    value:
+    - money
+    - time
+    - comfort
+    decided_by: team
+  choice_temperature:
+    value: 0.15
+    decided_by: team
+  setpoint_prior:
+    mean:
+      value: 24.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    sd:
+      value: 1.5
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  setpoint_obs_sd:
+    value: 0.5
+    decided_by: team
+consent_purposes:
+  arrival_planning:
+    allowed_categories:
+    - household
+    - anchors
+    - plan
+    allowed_roles:
+    - arrival_twin
+    allowed_fields:
+    - household
+    - anchors
+    - flags
+    - trips
+    actions:
+    - read
+    - compute
+  arrival_cost:
+    allowed_categories:
+    - finance
+    allowed_roles:
+    - arrival_twin
+    allowed_fields:
+    - budget
+    - value_of_time
+    actions:
+    - read
+    - compute
+  arrival_vision:
+    allowed_categories:
+    - constraints
+    allowed_roles:
+    - city_core
+    allowed_fields:
+    - pm10_ugm3_max
+    - outdoor_min_max
+    - indoor_c_max_on_arrival
+    actions:
+    - propose
+vault:
+  agent_token_ttl_s:
+    value: 3600
+    decided_by: team
+sync:
+  noise_sigma_multiple:
+    value: 1.0
+    decided_by: team
+  anomaly_robust_z:
+    value: 5.0
+    decided_by: team
+  min_window:
+    value: 3
+    decided_by: team
+  pii_keys:
+    value:
+    - pseudonym
+    - profile_id
+    - household
+    - name
+    - email
+    - phone
+    decided_by: team
+  pii_patterns:
+    value:
+    - 784-?\d{4}-?\d{7}-?\d
+    - '[\w.+-]+@[\w-]+\.[\w.]+'
+    decided_by: team
+  sigma_from_interval_z:
+    value: 1.2816
+    decided_by: team
+  prior_pseudo_count:
+    value: 5
+    decided_by: team
+future:
+  workdays_per_month:
+    value: 22
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  horizon_months:
+    value: 12
+    decided_by: team
+business:
+  hire_lag_after_license_days:
+    dist: uniform
+    low: 20
+    high: 45
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+vision:
+  pm10_ugm3_max:
+    value: 50
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  outdoor_min_max:
+    value: 0
+    decided_by: user
+  min_p_feasible:
+    value: 0.8
+    decided_by: team
+  links:
+  - id: airport
+    uses_av: true
+    title: Plane → covered pick-up zone
+    action: robotaxi.dispatch_covered
+    action_class: fleet_dispatch
+  - id: car
+    uses_av: true
+    title: 'Robotaxi: cabin filtration'
+    action: vehicle.cabin_recirculation
+    action_class: vehicle_comfort
+  - id: road
+    uses_av: true
+    title: Lower-dust route
+    action: route.low_dust
+    action_class: route_plan
+  - id: building
+    title: Lift waiting, lobby ventilation
+    action: building.lobby_ventilation
+    action_class: building_hvac
+  - id: home
+    title: Flat pre-cooled overnight
+    action: hvac.preload_offpeak
+    action_class: hvac_setpoint
+  - id: grid
+    title: 'Grid: no peak increase'
+    action: grid.offpeak_schedule
+    action_class: grid_schedule
+  envelopes:
+    fleet_dispatch:
+      max_latency_s: 5.0
+      max_staleness_s: 60.0
+      min_confidence: 0.8
+      degraded: defer
+      human_approval: true
+    vehicle_comfort:
+      max_latency_s: 2.0
+      max_staleness_s: 30.0
+      min_confidence: 0.7
+      degraded: defer
+      human_approval: false
+    route_plan:
+      max_latency_s: 5.0
+      max_staleness_s: 120.0
+      min_confidence: 0.7
+      degraded: shadow_only
+      human_approval: false
+    building_hvac:
+      max_latency_s: 60.0
+      max_staleness_s: 600.0
+      min_confidence: 0.7
+      degraded: defer
+      human_approval: false
+    hvac_setpoint:
+      max_latency_s: 60.0
+      max_staleness_s: 600.0
+      min_confidence: 0.7
+      degraded: defer
+      human_approval: true
+    grid_schedule:
+      max_latency_s: 300.0
+      max_staleness_s: 900.0
+      min_confidence: 0.7
+      degraded: defer
+      human_approval: false
+  av:
+    tau_v2x_ms:
+      value: 100.0
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    tau_c:
+      value: 0.8
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+    safety_case_ref:
+      value: ODD-SC-demo (placeholder)
+      source: 'synthetic-demo: REPLACE with a real sourced value'
+  arbitration:
+    policy_version: arbitration-demo-0.1
+    weights:
+      dust_exposure: 1.0
+      neighbor_discomfort: 1.0
+      energy_kwh: 0.2
+    emergency_weights:
+      dust_exposure: 3.0
+      neighbor_discomfort: 1.0
+      energy_kwh: 0.0
+    inequity_lambda: 0.5
+    inequity_measure: max_gap
+    decided_by: team
+cohort:
+  flex_days:
+    value: 5
+    decided_by: team
+scenario:
+  today:
+    value: '2026-10-01'
+    decided_by: team
+  week_start:
+    value: '2026-11-22'
+    decided_by: team
+  week_month:
+    value: nov
+    decided_by: team
+  move_in:
+    value: '2026-11-19'
+    decided_by: team
+traffic_windows:
+  peak_windows_min:
+    value:
+    - - 435
+      - 525
+    - - 1020
+      - 1110
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+life:
+  on_time_probability:
+    value: 0.9
+    decided_by: team
+  step_min:
+    value: 10
+    decided_by: team
+  search_back_min:
+    value: 90
+    decided_by: team
+  min_window_h:
+    value: 1
+    decided_by: team
+  awake_hours:
+    value:
+    - 6
+    - 21
+    decided_by: team
+  reschedule_slots_min:
+    value:
+    - 600
+    - 660
+    - 840
+    decided_by: team
+  pack_reminder_min:
+    value: 45
+    decided_by: team
+habits:
+  min_n:
+    value: 3
+    decided_by: team
+  min_shift_h:
+    value: 0.75
+    decided_by: team
+  max_sd_h:
+    value: 0.5
+    decided_by: team
+  min_choices:
+    value: 3
+    decided_by: team
+assistant:
+  max_questions_per_day:
+    value: 3
+    decided_by: team
+  quiet_hours:
+    value:
+    - 21
+    - 7
+    decided_by: team
+  near_tie:
+    value: 0.1
+    decided_by: team
+gateway:
+  allowlist:
+    value:
+    - tamm.abudhabi.demo
+    - icp.gov.ae.demo
+    - adek.gov.ae.demo
+    decided_by: team
+  claims:
+    value:
+    - step_duration
+    decided_by: team
+  max_days:
+    value: 60
+    decided_by: team
+official_search:
+  allowlist:
+    value:
+    - mocc.gov.ae
+    - moccae.gov.ae
+    - etihad.com
+    - egyptair.com
+    - tamm.abudhabi
+    - u.ae
+    - icp.gov.ae
+    - adek.gov.ae
+    - doh.gov.ae
+    - addc.ae
+    - dmt.gov.ae
+    - adrec.gov.ae
+    decided_by: team
+plan_levers:
+  value:
+  - id: medical_first_slot
+    variable: medical_wait
+    value: 0.0
+    title: medical test on the first free day
+    title_ru: медкомиссия в первый свободный день
+  - id: eid_express
+    variable: emirates_id_dur
+    scale: 0.7
+    title: express Emirates ID filing (synthetic)
+    title_ru: ускоренная подача Emirates ID (синтетика)
+  - id: bank_early
+    variable: bank_dur
+    value: 0.0
+    title: opening the bank account earlier
+    title_ru: открыть банковский счёт раньше
+  decided_by: team
+causal:
+  samples:
+    value: 400
+    decided_by: team
+  seed:
+    value: 7
+    decided_by: team
+  scm_version:
+    value: plan-scm-demo-1
+    decided_by: team
+privacy:
+  health_terms:
+    value:
+    - астм\w*
+    - аллерг\w*
+    - диабет\w*
+    - эпилеп\w*
+    - asthm\w*
+    - allerg\w*
+    - diabet\w*
+    - инвалид\w*
+    - беремен\w*
+    - ходунк\w*
+    - walker\w*
+    - wheelchair\w*
+    - коляск\w*
+    decided_by: team
+  derived_constraints:
+    value:
+    - id: respiratory
+      terms:
+      - астм\w*
+      - аллерг\w*
+      - asthm\w*
+      - allerg\w*
+      constraints:
+        pm10_ugm3_max: 50
+        outdoor_harsh_min_max: 0
+    - id: mobility
+      terms:
+      - ходунк\w*
+      - walker\w*
+      - wheelchair\w*
+      - инвалид\w*
+      - коляск\w*
+      constraints:
+        accessible_vehicle: true
+        mobility_aid: 1
+        outdoor_harsh_min_max: 0
+    decided_by: team
+  jurisdiction:
+    value: AE-AZ
+    decided_by: team
+  legal_basis:
+    value: consent
+    decided_by: team
+trust:
+  promote_after_approvals:
+    value: 2
+    decided_by: team
+  autonomy_allowed_actions:
+    value:
+    - propose_visit_window
+    - precool_home
+    decided_by: team
+  level_names:
+    value:
+    - shadow
+    - advises
+    - proposes
+    - acts alone
+    decided_by: team
+indoor_air:
+  co2_ppm:
+    value: 700
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  humidity_pct:
+    value: 50
+    source: 'synthetic-demo: REPLACE with a real sourced value'
+  noise_db:
+    value: 35
+    source: 'synthetic-demo: REPLACE with a real sourced value'

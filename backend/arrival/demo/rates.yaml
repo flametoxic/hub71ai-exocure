@@ -1,0 +1,13 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: 'synthetic-demo: REPLACE with a real sourced value'
+temporary_housing_per_day:
+  value: 450
+  source: 'synthetic-demo: REPLACE with a real sourced value'
+setup_costs_aed:
+  value: 25000
+  source: 'synthetic-demo: REPLACE with a real sourced value'
+company_monthly_cost_aed:
+  value: 35000
+  source: 'synthetic-demo: REPLACE with a real sourced value'

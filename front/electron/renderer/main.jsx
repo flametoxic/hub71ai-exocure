@@ -1,0 +1,13 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Console from './Console.jsx';
+import Phone from './Phone.jsx';
+import Hub from './Hub.jsx';
+import './shared.css';
+import './atmosphere.css';
+import './glass.css';
+const view = location.pathname.split('/').pop();
+const Component = { console: Console, phone: Phone, hub: Hub }[view] || Console;
+document.title = `CURE · ${view === 'phone' ? 'Phone' : view === 'hub' ? 'Home hub' : 'Stage console'}`;
+document.getElementById('root').dataset.framework = 'react';
+createRoot(document.getElementById('root')).render(<Component search={location.search} />);

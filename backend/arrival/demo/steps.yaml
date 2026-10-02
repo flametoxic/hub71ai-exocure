@@ -1,0 +1,111 @@
+meta:
+  data_mode: synthetic
+  source_kind: synthetic
+  source: dependencies and durations — REPLACE from TAMM and agencies
+steps:
+- id: entry_permit
+  title: Entry permit
+  duration_days:
+    dist: triangular
+    low: 3
+    mode: 5
+    high: 10
+  source_url: TODO
+  title_ru: Въездное разрешение
+- id: medical
+  title: Medical test
+  blocks_on:
+  - entry_permit
+  requires_visit: true
+  center: medical
+  duration_days:
+    dist: triangular
+    low: 1
+    mode: 2
+    high: 4
+  source_url: TODO
+  title_ru: Медкомиссия
+- id: emirates_id
+  title: Emirates ID and residence visa
+  blocks_on:
+  - medical
+  requires_visit: true
+  center: icp
+  duration_days:
+    dist: triangular
+    low: 5
+    mode: 7
+    high: 14
+  source_url: TODO
+  title_ru: Emirates ID и резидентская виза
+- id: bank
+  title: Bank account
+  blocks_on:
+  - emirates_id
+  duration_days:
+    dist: triangular
+    low: 2
+    mode: 4
+    high: 10
+  source_url: TODO
+  title_ru: Банковский счёт
+- id: tenancy
+  title: Tenancy contract
+  blocks_on:
+  - emirates_id
+  duration_days:
+    dist: triangular
+    low: 3
+    mode: 7
+    high: 14
+  source_url: TODO
+  title_ru: Договор аренды
+- id: tawtheeq
+  title: Tawtheeq registration
+  blocks_on:
+  - tenancy
+  duration_days:
+    dist: triangular
+    low: 1
+    mode: 2
+    high: 5
+  source_url: TODO
+  title_ru: Регистрация договора (Tawtheeq)
+- id: utilities
+  title: Electricity and water
+  blocks_on:
+  - tawtheeq
+  - bank
+  duration_days:
+    dist: triangular
+    low: 1
+    mode: 3
+    high: 6
+  source_url: TODO
+  title_ru: Электричество и вода
+- id: school
+  title: School
+  blocks_on:
+  - emirates_id
+  applies_if:
+    has_school_children: true
+  duration_days:
+    dist: triangular
+    low: 5
+    mode: 10
+    high: 21
+  source_url: TODO
+  title_ru: Школа
+- id: company_license
+  title: Company licence
+  blocks_on:
+  - emirates_id
+  applies_if:
+    founder: true
+  duration_days:
+    dist: triangular
+    low: 5
+    mode: 10
+    high: 20
+  source_url: TODO
+  title_ru: Лицензия компании
