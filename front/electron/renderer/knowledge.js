@@ -24,7 +24,8 @@ export function knowledgeEntries(state, memory) {
   if (memory.arrival && !entries.some(entry => entry.title === 'Arrival')) entries.push({title: 'Arrival', text: memory.arrival, kind: 'Saved'});
   for (const fact of [...(memory.facts || [])].reverse()) {
     if (!fact.text) continue;
-    entries.push({title: 'Saved note', text: fact.text, kind: 'Remembered', at: fact.at});
+    entries.push({title: fact.kind === 'agent_finding' ? 'Specialist finding' : 'Saved note', text: fact.text,
+      kind: fact.status === 'pending' ? 'Needs review' : fact.provenance === 'inference' ? 'Inference' : 'Remembered', at: fact.at});
   }
   return entries;
 }

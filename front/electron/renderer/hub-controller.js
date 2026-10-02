@@ -1,12 +1,15 @@
 import { createShared } from './shared.js';
+import {mountAgentFeed} from './mind-view.js';
 export function mount(root, search, onResident = () => {}) {
-const { Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderConversation, micButton, speak } = createShared(search);
+const shared = createShared(search);
+const { Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderConversation, micButton, speak } = shared;
 
 if (Q.get('embed')) root.classList.add('embed');
 CURE.device = 'home hub';
 CURE.voiceOn = Q.get('voice') === '1';
 const $ = id => root.querySelector(`[id="${id}"]`);
 let ST = null, sending = false, outgoing = null;
+let disposeAgents = null;
 function resizeInput() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; }
 function updateSend() { sendButton.disabled = sending || !ST?.resident || !input.value.trim(); }
 const input = h('textarea', {rows: 1, placeholder: 'Ask CURE…', 'aria-label': 'Message CURE',
@@ -72,8 +75,23 @@ function draw() {
     Object.entries(T.windows).forEach(([p, w]) => b.append(h('span', {}, p), hoursRow(w, 6, 21, T.hour)));
   }
 }
-CURE.onState(st => { ST = st; draw(); });
+CURE.onState(async st => {
+  disposeAgents?.(); disposeAgents = null;
+  ST = st; draw();
+  if (!st?.resident) return;
+  const feed = h('div', {class: 'hub-specialists'});
+  $('say').append(feed);
+  disposeAgents = mountAgentFeed(feed, shared);
+  try {
+    const mind = await CURE.mind();
+    if (ST !== st || CURE.disposed) return;
+    const upcoming = (mind.week?.events || []).filter(event => event.date >= st.clock.slice(0, 10))
+      .sort((a, b) => a.date.localeCompare(b.date) || a.start - b.start).slice(0, 4);
+    if (upcoming.length) $('now').append(h('div', {class: 'tag', style: 'margin-top:12px'}, 'Upcoming family plans'),
+      upcoming.map(event => h('p', {class: 'mini'}, `${event.date} · ${String(Math.floor(event.start)).padStart(2, '0')}:${String(Math.round(event.start % 1 * 60)).padStart(2, '0')} · ${event.en || event.id}`)));
+  } catch { /* Keep the current hub state when the optional schedule cannot load. */ }
+});
 CURE.watch(1500);
 
-return { client: CURE, dispose: () => CURE.dispose() };
+return { client: CURE, dispose: () => { disposeAgents?.(); CURE.dispose(); } };
 }

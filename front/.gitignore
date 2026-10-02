@@ -8,3 +8,10 @@ node_modules/
 .electron-smoke/
 dist/
 desktop.log
+.env
+.env.*
+!.env.example
+.htpasswd
+ACCESS.txt
+*-preview.png
+*.zip

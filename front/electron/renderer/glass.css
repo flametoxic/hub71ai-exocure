@@ -81,11 +81,12 @@ table.t th,table.t td{border-color:rgba(255,255,255,.08)}
 .phone-view .tabs button{border-radius:28px;border:1px solid transparent;padding:0;gap:2px;font-size:10px;font-weight:600;color:rgba(242,246,252,.75);background:transparent;box-shadow:none;backdrop-filter:none}
 .phone-view .tabs button .i{font-size:0;width:22px;height:22px;opacity:1;background:currentColor;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}
 /* Local outline icons bundled with the desktop. */
-.phone-view .tabs button:nth-child(1) .i{-webkit-mask-image:url('./assets/icons/sun.svg');mask-image:url('./assets/icons/sun.svg')}
-.phone-view .tabs button:nth-child(2) .i{-webkit-mask-image:url('./assets/icons/route.svg');mask-image:url('./assets/icons/route.svg')}
-.phone-view .tabs button:nth-child(3) .i{width:24px;height:24px;-webkit-mask:none;mask:none;background:url('../logo.svg') center/contain no-repeat}
-.phone-view .tabs button:nth-child(4) .i{-webkit-mask-image:url('./assets/icons/brain.svg');mask-image:url('./assets/icons/brain.svg')}
-.phone-view .tabs button:nth-child(5) .i{-webkit-mask-image:url('./assets/icons/shield-check.svg');mask-image:url('./assets/icons/shield-check.svg')}
+.phone-view .tabs button .icon-today{-webkit-mask-image:url('./assets/icons/sun.svg');mask-image:url('./assets/icons/sun.svg')}
+.phone-view .tabs button .icon-plan{-webkit-mask-image:url('./assets/icons/route.svg');mask-image:url('./assets/icons/route.svg')}
+.phone-view .tabs button .icon-chat{width:24px;height:24px;-webkit-mask:none;mask:none;background:url('../logo.svg') center/contain no-repeat}
+.phone-view .tabs button .icon-cure{-webkit-mask-image:url('./assets/icons/brain.svg');mask-image:url('./assets/icons/brain.svg')}
+.phone-view .tabs button .icon-memory{-webkit-mask-image:url('./assets/icons/memory.svg');mask-image:url('./assets/icons/memory.svg')}
+.phone-view .tabs button .icon-trust{-webkit-mask-image:url('./assets/icons/shield-check.svg');mask-image:url('./assets/icons/shield-check.svg')}
 .phone-view .tabs button.on{background:rgba(255,255,255,.14);border-color:var(--g-line-hi);color:#FF9A2E;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
 .phone-view .tabs button.on .i{opacity:1;filter:none}
 .phone-view .tabs button:hover{background:rgba(255,255,255,.08)}
@@ -147,8 +148,9 @@ table.t th,table.t td{border-color:rgba(255,255,255,.08)}
   :root{--g-fill:#121B2A;--g-fill-hi:#172233;--g-blur:none}
 }
 
-/* Adapt the handoff shell to the live, growing composers and five tabs. */
-.phone-view .tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+/* Keep all six tabs evenly spaced and centered inside the glass bar. */
+.phone-view .tabs{grid-template-columns:repeat(6,minmax(0,1fr))}
+.phone-view .tabs button{justify-content:center;min-width:0;text-align:center}
 .phone-view .screen{padding-bottom:var(--composer-space,110px)}
 .phone-view .chatbox textarea{min-height:48px;max-height:160px;border-radius:24px;padding:12px 14px;font-size:15px;line-height:20px;background:var(--g-fill-hi);border-color:var(--g-line-hi);box-shadow:inset 0 1px 0 #ffffff47,0 10px 30px #0005}
 .phone-view .chatbox.hidden,.phone-view .tabs.hidden{display:none}

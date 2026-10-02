@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, dialog, protocol, ipcMain, shell } = require('electron');
 const path = require('node:path');
+const { backendContract } = require('../backend-contract.mjs');
 const { startBackend } = require('./backend.cjs');
 const { isDesktopURL, createProtocolHandler, apiPath } = require('./desktop-protocol.cjs');
 protocol.registerSchemesAsPrivileged([{ scheme: 'cure', privileges: { standard: true, secure: true, supportFetchAPI: true } }]);
@@ -15,9 +16,9 @@ function protectWindow(window) {
     }
   });
   window.webContents.on('will-navigate', (event, url) => { if (!isDesktopURL(url)) event.preventDefault(); });
-  window.webContents.setWindowOpenHandler(({ url }) => {
-    try { if (new URL(url).protocol === 'https:') shell.openExternal(url); } catch {}
-    return { action: 'deny' };
+  window.webContents.setWindowOpenHandler(({url}) => {
+    try { if (['https:', 'http:'].includes(new URL(url).protocol)) shell.openExternal(url).catch(() => {}); } catch {}
+    return {action: 'deny'};
   });
 }
 function openView(view, query = '', { show = true, offscreen = false } = {}) {
@@ -49,10 +50,10 @@ function registerDesktop() {
   ipcMain.handle('cure:request', async (event, route, body) => {
     if (!isDesktopURL(event.senderFrame.url) || !backend) throw new Error('CURE backend unavailable');
     const endpoint = apiPath(route, body);
-    const response = await fetch(`${backend.url}${endpoint === '/health' ? '' : '/twin'}${endpoint}`, {
+    const response = await fetch(`${backend.url}${endpoint}`, {
       method: body === undefined ? 'GET' : 'POST',
       ...(body === undefined ? {} : { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
-      signal: AbortSignal.timeout(90000),
+      signal: AbortSignal.timeout(backendContract.requestTimeoutMs),
     });
     if (!response.ok) throw new Error((await response.text()).slice(0, 500));
     return response.json();

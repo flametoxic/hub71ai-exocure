@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { request } from './api-client.mjs';
 
 export default function BackendStatus({ rid }) {
   const [result, setResult] = useState(null);
@@ -10,8 +11,8 @@ export default function BackendStatus({ rid }) {
       busy = true;
       try {
         const [health, state] = await Promise.all([
-          window.cureDesktop.request('/health'),
-          window.cureDesktop.request('/state?rid=' + encodeURIComponent(rid)),
+          request('/health'),
+          request('/state?rid=' + encodeURIComponent(rid)),
         ]);
         if (!disposed) { setResult({ health, state, receivedAt: new Date().toISOString() }); setError(''); }
       } catch (failure) {

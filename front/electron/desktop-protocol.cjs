@@ -1,5 +1,6 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { resolveAPI } = require('../backend-contract.mjs');
 function isDesktopURL(value) {
   try { const url = new URL(value); return url.protocol === 'cure:' && url.hostname === 'desktop'; }
   catch { return false; }
@@ -28,12 +29,6 @@ function createProtocolHandler(root) {
   };
 }
 function apiPath(value, body) {
-  const url = new URL(value, 'http://cure-api');
-  if (url.origin !== 'http://cure-api' || !value.startsWith('/') || value.startsWith('//') || url.hash) throw new Error('Invalid API path');
-  const allowed = body === undefined
-    ? /^\/(health|state|memory|mind|agents\/dynamic(?:\/[a-zA-Z0-9_-]+)?|moments|why\/[a-zA-Z0-9_-]+)$/
-    : /^\/(reset|door|bootstrap|ask|act|mind\/(recall|infer)|agents\/dynamic(?:\/[a-zA-Z0-9_-]+\/archive)?|device\/open|moment\/[a-zA-Z0-9_-]+)$/;
-  if (!allowed.test(url.pathname)) throw new Error('Unknown CURE API route');
-  return url.pathname + url.search;
+  return resolveAPI(value, body).path;
 }
 module.exports = { isDesktopURL, createProtocolHandler, apiPath };

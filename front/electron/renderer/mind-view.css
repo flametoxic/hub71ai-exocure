@@ -1,0 +1,17 @@
+.phone-view .mind-help,.hub-view .mind-help{color:#a5b9d6;font-size:11px;line-height:1.6}
+.mind-error{color:#ffb2b2;font-size:12px;overflow-wrap:anywhere}
+.phone-view .mind-task,.phone-view .mind-memory,.agent-finding{padding:12px 0;border-top:1px solid #b1cfff22;overflow-wrap:anywhere}
+.phone-view .mind-task strong{display:block;font-size:13px;font-weight:600}
+.mind-memory p,.agent-finding p{font-size:12px;line-height:1.6;margin:5px 0}
+.mind-provenance{display:inline-block;font-size:9px;line-height:1.5;letter-spacing:.04em;color:#a9c7ec;border:1px solid #9fc6ff33;border-radius:8px;padding:2px 6px;margin:5px 5px 0 0}
+.task-status{display:inline-block;font-size:10px;margin-top:7px;border-radius:8px;padding:3px 7px;background:#93c2ff18;color:#adcfff}
+.task-status.status-blocked{color:#ffd2a2;background:#ffb37015}
+.task-status.status-completed{color:#9be0bf;background:#85e0b515}
+.phone-view select{border:1px solid #bdd9ff40;border-radius:12px;padding:8px;background:#152638;color:#d5e6ff;font:inherit;min-width:0}
+.phone-view .mind-actions{margin-top:10px;flex-wrap:wrap}
+.phone-view .mind-actions button{font-size:11px}
+.phone-view .specialist-task{font-size:15px;font-weight:600;line-height:1.5;margin:8px 0}
+.agent-stages{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}
+.agent-stages span{font-size:8px;color:#a9bddd;background:#a0c6ff12;padding:3px 5px;border-radius:6px}
+.agent-finding a{font-size:11px;color:#b5d8ff}
+.phone-view .memory-profile{margin-top:15px}

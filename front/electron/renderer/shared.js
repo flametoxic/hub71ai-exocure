@@ -1,3 +1,4 @@
+import { request } from './api-client.mjs';
 export function createShared(search = "") {
 /* CURE windows: shared API client + card renderers. Windows keep no data: everything lives in the resident's
    contour in the CURE core; every window re-reads /twin/state. */
@@ -9,7 +10,7 @@ const CURE = {
   lastRev: null,
   disposed: false,
   async api(path, body, quiet = false) {
-    try { return await window.cureDesktop.request(path, body); }
+    try { return await request(path, body); }
     catch (error) { if (!quiet) toast('Error: ' + error.message.slice(0, 160)); throw error; }
   },
   act(action, args = {}) { return this.api('/act', {rid: this.rid, action, args, device: this.device}).then(r => (this.kick(), r)); },
@@ -104,6 +105,7 @@ async function decide(id, yes) { await CURE.act('decide', {item_id: id, approved
 
 // ---------------------------------------------------------------- card renderers
 const R = {
+  dynamic_agent() { return card('Specialist', '', h('p', {}, 'Research is starting. Follow the progress and review findings below.')); },
   profile_intake(c) {
     const fields = Object.values(c.fields || {});
     const known = fields.filter(f => ['known', 'derived'].includes(f.status)).length;
@@ -328,20 +330,6 @@ function renderConversation(el, conv, {cards = true, onQuick} = {}) {
   el.scrollTop = el.scrollHeight;
 }
 
-function renderAgent(agent) {
-  const spec = agent.spec || {}, result = agent.result;
-  return card('Specialist · ' + agent.task, agent.status,
-    chips((agent.history || []).map(item => item.stage), 'acc'),
-    spec.goal ? h('p', {}, spec.goal) : null,
-    spec.allowed_tools ? h('div', {class:'dim'}, 'Tools: ' + spec.allowed_tools.join(', ')) : null,
-    spec.allowed_sources ? h('div', {class:'dim'}, 'Sources: ' + spec.allowed_sources.join(', ')) : null,
-    h('div', {class:'dim'}, 'Research and drafts · findings need review'),
-    agent.error ? h('p', {}, 'Failed: ' + agent.error) : null,
-    result ? [h('p', {}, result.summary), h('ul', {}, result.checklist.map(text => h('li', {}, text))),
-      result.questions.map(text => h('p', {}, text)),
-      result.findings.map(finding => h('p', {}, finding.text, ' ', h('a', {href:finding.source_url, target:'_blank', rel:'noreferrer'}, 'Official source')))] : null);
-}
-
 // ---------------------------------------------------------------- voice (browser speech API when available)
 function micButton(input, onDone, langFn) {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -360,5 +348,5 @@ function speak(text, lang) {
   const u = new SpeechSynthesisUtterance(text); u.lang = lang === 'ru' ? 'ru-RU' : 'en-US'; speechSynthesis.cancel(); speechSynthesis.speak(u);
 }
 
-return {Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderAgent, renderConversation, micButton, speak};
+return {Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderConversation, micButton, speak};
 }

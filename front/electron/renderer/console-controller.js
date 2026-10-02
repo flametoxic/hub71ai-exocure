@@ -1,6 +1,6 @@
 import { createShared } from './shared.js';
 export function mount(root, search, onResident = () => {}) {
-const { Q, CURE, h, card, chips, renderCard, renderAgent, json } = createShared(search);
+const { Q, CURE, h, card, chips, renderCard } = createShared(search);
 const $ = id => root.querySelector(`[id="${id}"]`);
 function setRid(rid) {
   CURE.rid = rid;
@@ -29,13 +29,15 @@ async function hood(st) {
   const m = conv[conv.length - 1];
   const el = $('hood'); el.innerHTML = '';
   if (st.resident) {
+    const rid = CURE.rid;
     try {
       const mind = await CURE.mind();
-      el.append(card('World Model', mind.mode, h('p', {}, `${mind.memories.length} memories · ${mind.graph.nodes.length} graph nodes`),
-        json(mind.current_situation), json(mind.last_trace),
-        mind.recent_inferences.map(inference => card('Inference', inference.provenance, h('p', {}, inference.assessment), chips(inference.evidence_ids))),
-        mind.agents.map(renderAgent)));
-    } catch {}
+      if (CURE.disposed || CURE.rid !== rid || !el.isConnected) return;
+      el.append(card('Family overview', '',
+        h('p', {}, `${mind.week?.event_count || 0} events · ${mind.week?.issues?.length || 0} schedule conflicts`),
+        h('p', {}, `${mind.memories?.length || 0} memories · ${mind.tasks?.filter(task => task.status === 'blocked').length || 0} blocked tasks`),
+        (mind.agents || []).filter(agent => agent.status !== 'ARCHIVED').map(agent => h('p', {}, `${agent.task} · ${agent.status.replaceAll('_', ' ').toLowerCase()}`))));
+    } catch { el.append(h('p', {class: 'muted'}, 'Family overview unavailable.')); }
   }
   if (!m) { el.append(h('div', {class: 'muted'}, 'No replies yet.')); return; }
   el.append(card('Route', m.route || '—', h('div', {}, m.text)));
@@ -51,7 +53,7 @@ async function hood(st) {
   if (c.length) { $('city').innerHTML = ''; c.forEach(x => $('city').append(renderCard(x))); }
 }
 CURE.onState(hood);
-if (Q.get('rid')) setRid(Q.get('rid')); else selectNew();
+setRid(Q.get('rid') || 'leila');
 CURE.watch(1500);
 return { client: CURE, dispose: () => CURE.dispose(), resetAll, setRid, selectLeila, selectNew };
 }

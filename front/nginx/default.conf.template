@@ -1,0 +1,29 @@
+server {
+    listen 80;
+    server_name _;
+    server_tokens off;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    location ~ ^/(index|console|phone|app|hub)\.html$ {
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+    location /twin/ {
+        proxy_pass ${CURE_API_UPSTREAM};
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 120s;
+    }
+    location = /health {
+        proxy_pass ${CURE_API_UPSTREAM};
+        proxy_set_header Host $proxy_host;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 15s;
+    }
+}

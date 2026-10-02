@@ -2,6 +2,7 @@ const { spawn, execFile } = require('node:child_process');
 const fs = require('node:fs');
 const net = require('node:net');
 const path = require('node:path');
+const {backendContract, resolveAPI, isBackendReady} = require('../backend-contract.mjs');
 
 function backendURL(value) {
   const url = new URL(value);
@@ -43,18 +44,19 @@ async function freePort(requested = 0) {
   return port;
 }
 
-async function waitForBackend(url, failure, timeout = 30000) {
+async function waitForBackend(url, failure, timeout = backendContract.startupTimeoutMs) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
     const error = failure();
     if (error) throw error;
     try {
-      const health = await fetch(`${url}/health`, { signal: AbortSignal.timeout(1000) });
-      if (!health.ok || (await health.json()).ready !== true) throw new Error('Backend health check failed');
-      const response = await fetch(`${url}/twin/state`, { signal: AbortSignal.timeout(1000) });
+      const health = await fetch(`${url}${resolveAPI('/health').path}`, { signal: AbortSignal.timeout(1000) });
+      if (!health.ok) throw new Error('Backend health check failed');
+      const status = await health.json();
+      const response = await fetch(`${url}${resolveAPI('/state').path}`, { signal: AbortSignal.timeout(1000) });
       if (response.ok) {
         const state = await response.json();
-        if (typeof state.clock === 'string' && state.city) return;
+        if (isBackendReady(status, state)) return;
       }
     } catch { /* Retry while the Python process initializes. */ }
     await new Promise(resolve => setTimeout(resolve, 200));
@@ -76,7 +78,7 @@ async function startBackend(root, env = process.env) {
   const port = await freePort(requested ? Number(requested) : 0);
   const child = spawn(pythonCommand(root, env), [path.join(root, 'tools/run_demo.py')], {
     cwd: root, windowsHide: true,
-    env: { ...env, PORT: String(port), HOST: '127.0.0.1', PYTHONUTF8: '1' },
+    env: { ...env, PORT: String(port), HOST: '127.0.0.1', PYTHONUTF8: '1', PYTHONDONTWRITEBYTECODE: '1' },
     stdio: ['ignore', 'pipe', 'pipe'],
     detached: process.platform !== 'win32',
   });

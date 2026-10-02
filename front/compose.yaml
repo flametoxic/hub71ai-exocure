@@ -1,0 +1,11 @@
+name: cure-front
+services:
+  frontend:
+    build: .
+    ports:
+      - "${CURE_HTTP_PORT:-80}:80"
+    environment:
+      CURE_API_UPSTREAM: "${CURE_API_UPSTREAM:-http://89.169.123.121:8000}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

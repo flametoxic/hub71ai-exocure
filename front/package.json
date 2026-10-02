@@ -8,8 +8,7 @@
     "start": "npm run build && node electron/launch.cjs",
     "start:debug": "electron .",
     "build": "vite build",
-    "test:integration": "npm run build && electron electron/integration-test.cjs",
-    "test:live": "npm run build && electron electron/live-integration-test.cjs"
+    "build:web": "vite build --config vite.web.config.mjs"
   },
   "devDependencies": {
     "electron": "44.5.1",

@@ -9,7 +9,7 @@ import logo from '../logo.svg';
 export default function Console({ search = '' }) {
   const root = useRef(null);
   const controller = useRef(null);
-  const [rid, setRid] = useState(new URLSearchParams(search).get('rid') || '');
+  const [rid, setRid] = useState(new URLSearchParams(search).get('rid') || 'leila');
   const [device, setDevice] = useState('phone');
   const [rightOpen, setRightOpen] = useState(false);
   const [switchingProfile, setSwitchingProfile] = useState(false);
@@ -66,7 +66,7 @@ export default function Console({ search = '' }) {
           <button aria-pressed={device === 'hub'} onClick={() => setDevice('hub')}>Home hub</button>
         </nav>
         <div className="device-panel" hidden={device !== 'phone'}>
-          <div className="phonebox"><Phone key={rid} search={`?embed=1&rid=${encodeURIComponent(rid)}`} onResident={value => controller.current?.setRid(value)} /></div>
+          <div className="phonebox"><Phone key={rid} search={`?embed=1&tab=chat&rid=${encodeURIComponent(rid)}`} onResident={value => controller.current?.setRid(value)} /></div>
         </div>
         <div className="device-panel" hidden={device !== 'hub'}>
           <div className="hubbox"><Hub key={rid} search={`?embed=1&rid=${encodeURIComponent(rid)}`} /></div>

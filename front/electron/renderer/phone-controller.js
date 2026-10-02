@@ -1,15 +1,23 @@
 import { createShared } from './shared.js';
 import colorLogo from '../logocolor.svg';
 import { knowledgeEntries } from './knowledge.js';
+import { mountWeekGlobe } from './week-globe.js';
+import './week-globe.css';
+import {mountMindView, mountAgentFeed} from './mind-view.js';
+import './mind-view.css';
 export function mount(root, search, onResident = () => {}) {
-const { Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderAgent, renderConversation, micButton, speak } = createShared(search);
+const shared = createShared(search);
+const { Q, CURE, EN, agentName, h, n0, n1, pct, mid, toast, card, kv, json, chips, win, spark, hoursRow, decide, R, renderCard, renderConversation, micButton, speak } = shared;
 
 if (Q.get('embed')) root.classList.add('embed');
 CURE.device = Q.get('device') || 'phone';
+CURE.rid = Q.get('rid') || 'leila';
 CURE.voiceOn = Q.get('voice') === '1';
-const TABS = [['today', '◐', 'Today'], ['plan', '⟶', 'Plan'], ['chat', '✦', 'CURE'], ['memory', '◈', 'Knows'], ['trust', '⛨', 'Trust']];
+const TABS = [['today', '◐', 'Today'], ['plan', '⟶', 'Plan'], ['chat', '✦', 'Chat'], ['cure', '◈', 'Cure'], ['memory', '◈', 'Memory'], ['trust', '⛨', 'Trust']];
 let tab = TABS.some(([id]) => id === Q.get('tab')) ? Q.get('tab') : 'chat', ST = null, lastSpoken = null, sending = false, outgoing = null;
 let composer, sendButton;
+let disposeGlobe = null;
+let disposeAux = null;
 function resizeComposer() {
   if (!composer) return;
   composer.style.height = 'auto';
@@ -21,7 +29,7 @@ const $ = id => root.querySelector(`[id="${id}"]`);
 function drawTabs() {
   $('tabs').innerHTML = '';
   TABS.forEach(([id, i, t]) => $('tabs').append(h('button', {class: tab === id ? 'on' : '', onclick: () => { tab = id; draw(); }},
-    h('span', {class: 'i'}, i), t, id === 'today' && ST && ST.pending && ST.pending.length ? h('span', {class: 'dot'}, ST.pending.length) : null)));
+    h('span', {class: `i icon-${id}`, 'aria-hidden': 'true'}, i), t, id === 'today' && ST && ST.pending && ST.pending.length ? h('span', {class: 'dot'}, ST.pending.length) : null)));
 }
 function header(t, s) { return [h('h2', {}, t), s ? h('div', {class: 'sub'}, s) : null]; }
 function fmtClock(iso) { const d = new Date(iso); return d.toLocaleDateString('en-GB', {weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC'}) + ' · ' + iso.slice(11, 16); }
@@ -73,11 +81,10 @@ function chatScreen() {
     list.append(h('div', {class: 'msg you'}, outgoing.text));
   }
   if (sending) list.append(h('div', {class: 'reply-pending', role: 'status'}, ST?.lang === 'ru' ? 'CURE думает…' : 'CURE is thinking…'));
-  CURE.agents().then(({agents}) => {
-    if (tab === 'chat' && list.isConnected) agents.filter(a => a.status !== 'ARCHIVED').forEach(a => list.append(renderAgent(a)));
-  }).catch(() => {});
   setTimeout(() => { $('screen').scrollTop = 1e9; }, 0);
-  return [list];
+  const specialists = h('div', {class: 'chat-specialists'});
+  disposeAux = mountAgentFeed(specialists, shared);
+  return [list, specialists];
 }
 async function send(text) {
   text = (text || '').trim();
@@ -116,7 +123,15 @@ function drawChatbox() {
 function planScreen() {
   const L = ST.last || {};
   const drafts = (ST.drafts || []).slice().reverse();
-  return [...header('Plan', ST.arrival ? 'target ' + ST.arrival : 'no arrival date yet'),
+  const tasks = h('div', {class: 'plan-life-tasks'}, h('p', {class: 'mind-help'}, 'Loading life tasks…'));
+  const state = ST;
+  CURE.mind().then(mind => {
+    if (tab !== 'plan' || ST !== state || !tasks.isConnected) return;
+    tasks.replaceChildren(card('Life tasks', '', (mind.tasks || []).map(task => h('article', {class: 'mind-task'},
+      h('strong', {}, task.title), h('span', {class: `task-status status-${task.status}`}, task.status),
+      task.blockers?.length ? h('p', {class: 'mind-help'}, 'Waiting for: ' + task.blockers.join(', ').replaceAll('_', ' ')) : null))));
+  }).catch(error => { if (tasks.isConnected) tasks.replaceChildren(h('p', {class: 'mind-error'}, error.message)); });
+  return [...header('Plan', ST.arrival ? 'target ' + ST.arrival : 'no arrival date yet'), tasks,
     h('div', {class: 'row wrap'}, h('button', {onclick: () => CURE.act('plan')}, 'Recompute plan'), h('button', {onclick: () => CURE.act('agent_search')}, 'Agents: check official durations')),
     L.plan ? renderCard(L.plan) : null, L.plan_change ? renderCard(L.plan_change) : null, L.why ? renderCard(L.why) : null,
     drafts.length ? h('div', {class: 'tag', style: 'margin-top:12px'}, 'Drafts — you send them') : null, drafts.map(d => renderCard({type: 'draft', ...d}))];
@@ -125,39 +140,44 @@ function planScreen() {
 async function memoryScreen(el) {
   const state = ST;
   el.append(h('div', {class: 'muted'}, 'Loading saved notes…'));
-  const [m, mind] = await Promise.all([CURE.memory(), CURE.mind()]);
+  let m;
+  let memoryError;
+  try { m = await CURE.memory(); }
+  catch (error) { m = {}; memoryError = error.message; }
   if (tab !== 'memory' || ST !== state || !el.isConnected) return;
   const name = (state.household || []).find(person => person.role === 'adult')?.name;
   const notes = knowledgeEntries(state, m);
-  el.replaceChildren(...header('What CURE knows', name ? `${name}’s CURE` : 'Your CURE'),
-    h('div', {class: 'knowledge-summary'}, `${notes.length} saved notes`),
+  const mindHost = h('div', {class: 'mind-view'});
+  el.replaceChildren(...header('Memory', name ? `${name}’s knowledge and life tasks` : 'Your knowledge and life tasks'), mindHost,
+    memoryError ? h('p', {class: 'mind-error'}, memoryError) : null,
+    h('div', {class: 'knowledge-summary memory-profile'}, `${notes.length} profile notes`),
     h('div', {class: 'knowledge-notes'}, notes.length ? notes.map(note =>
       h('article', {class: 'card knowledge-note'},
         h('div', {class: 'knowledge-note-meta'}, note.title, h('span', {}, note.kind)),
         h('div', {class: 'knowledge-note-text'}, note.text),
         note.at ? h('time', {class: 'muted', datetime: note.at}, note.at.slice(0, 10)) : null))
       : h('div', {class: 'muted'}, 'No saved notes yet. Tell CURE about yourself in chat.')));
-  const situation = mind.current_situation;
-  el.append(card('Mind · current situation', mind.mode,
-    h('p', {}, situation.district ? 'District: ' + situation.district : 'District not selected'),
-    h('p', {}, situation.arrival ? 'Arrival: ' + situation.arrival : 'Arrival date not set'),
-    h('p', {}, 'Scenario clock: ' + situation.scenario_clock),
-    mind.goals.map(goal => h('p', {}, goal.title + ' · ' + goal.provenance))));
-  el.append(card('Life tasks', 'CURE state', mind.tasks.map(task => h('p', {}, task.title + ' · ' + task.status))));
-  const recallInput = h('input', {placeholder: 'Recall a memory…', 'aria-label': 'Recall memory'});
-  const recalled = h('div', {});
-  el.append(card('Associative memory', 'provenance', recallInput,
-    h('button', {onclick: async () => {
-      const reply = await CURE.api('/mind/recall', {rid:CURE.rid, query:recallInput.value, embeddings:mind.mode === 'openai'});
-      recalled.replaceChildren(h('p', {}, reply.mode), ...reply.memories.map(memory => h('p', {}, memory.text + ' · ' + memory.provenance)));
-    }}, 'Recall'), recalled,
-    mind.memories.slice(-12).map(memory => h('p', {}, memory.text + ' · ' + memory.provenance))));
-  el.append(card('Recent inferences', 'evidence, not confirmed facts',
-    mind.recent_inferences.map(inference => h('p', {}, inference.assessment + ' · ' + inference.kind + ' · ' + inference.provenance)),
-    h('button', {disabled:mind.mode !== 'openai', onclick:async () => {
-      await CURE.api('/mind/infer', {rid:CURE.rid, kind:'routine'}); await draw();
-    }}, 'Infer routine')));
-  mind.agents.filter(agent => agent.status !== 'ARCHIVED').forEach(agent => el.append(renderAgent(agent)));
+  disposeAux = mountMindView(mindHost, shared);
+}
+async function cureScreen(el) {
+  const state = ST;
+  const host = h('div', {class: 'week-globe', 'aria-label': 'Weekly family plan'});
+  el.append(host);
+  const loading = h('div', {class: 'globe-empty', role: 'status'}, 'Loading your week…');
+  host.append(loading);
+  try {
+    const week = await CURE.api('/week?rid=' + encodeURIComponent(CURE.rid), undefined, true);
+    if (tab !== 'cure' || ST !== state || !host.isConnected) return;
+    loading.remove();
+    const name = (state.household || []).find(person => person.role === 'adult')?.name || 'Your family';
+    disposeGlobe = mountWeekGlobe(host, week, name, h, () => {
+      if (sending) return;
+      tab = 'chat';
+      send('Optimize my weekly plan, taking into account my needs, my family, and what you remember about us.');
+    });
+  } catch {
+    if (host.isConnected) loading.textContent = 'Weekly plan unavailable. Please try again later.';
+  }
 }
 function trustScreen() {
   return [...header('Trust', ''),
@@ -166,6 +186,9 @@ function trustScreen() {
 
 async function draw() {
   const s = $('screen');
+  disposeGlobe?.(); disposeGlobe = null;
+  disposeAux?.(); disposeAux = null;
+  s.classList.toggle('cure-screen', tab === 'cure' && !!ST?.resident);
   if (!ST) {
     $('clock').textContent = '';
     $('who').textContent = '';
@@ -185,6 +208,7 @@ async function draw() {
   const keep = s.scrollTop;
   s.innerHTML = '';
   if (tab === 'memory') return memoryScreen(s);
+  if (tab === 'cure') return cureScreen(s);
   const f = {today: todayScreen, chat: chatScreen, plan: planScreen, trust: trustScreen}[tab];
   s.append(...[].concat(f()).filter(Boolean));
   if (tab !== 'chat') s.scrollTop = keep;
@@ -201,6 +225,6 @@ const composerObserver = new ResizeObserver(() => {
 });
 composerObserver.observe($('chatbox'));
 
-return { client: CURE, dispose: () => { composerObserver.disconnect(); CURE.dispose(); } };
+return { client: CURE, dispose: () => { disposeGlobe?.(); disposeAux?.(); composerObserver.disconnect(); CURE.dispose(); } };
 }
 
